@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="IT">
+
+  <head>
+      <meta http-equiv="content-type" content="text/html;
+       charset=UTF-8">
+       <link rel="stylesheet" type="text/css" href="../grafica.css">
+      <title>Appunti Basi di Dati</title>
+
+  </head>
+
+  <body>
+
+    <section style="background-color: #666">
+      <nav  class="navgeneral" style="width: 10%;">
+        <h2><a href="https://denisblagoev.github.io/">Homepage</a></h2>
+      </nav>
+      <header style="width: 90%;">
+        <h2>Appunti di Basi di Dati - Laboratorio</h2>
+      </header>
+    </section>
+
+    <section>
+
+      <nav>
+        <ul class="navul">
+          <li><a href="#introduzione">Introduzione</a></li>
+          <li><a href="#p_conf">Prima Configurazione</a></li>
+          <li><a href="#creaDataBase">Crea DataBase</a></li>
+          <ul class="ulg">
+            <li><a href="#creaTabella">Crea Tabella</a></li>
+          </ul>
+          <li><a href="#Clausole">Clausole</a></li>
+          <li><a href="#dominio">Creazione di un dominio</a></li>
+          <li><a href="#"></a></li>
+          <li><a href="#"></a></li>
+          <li><a href="#"></a></li>
+        </ul>
+      </nav>
+
+    <article>
+
+    <div class= "generaldiv">
+      <a name="introduzione"></a>
+      <h3 >Introduzione</h3>
+      <code>Psql -U <em>stefano</em> -h <em>islab.di.unimi.it ospedale</em></code>
+      <br>
+      <p>L’utente stefano sta cercando di accedere in modo host al server ospedale.</p>
+      <br>
+      <div>
+        <h4>In PostgreSQL si possono creare più DataBase, questo li rende indipendenti dagli altri</h4>
+        <p>Al suo interno ci possono essere degli schemi predefiniti che possono essere usati come schema di base.<br>
+        In particolare c'è ne sono 2 particolari:</p>
+        <p>information_schema: catalogo relazionale (quali sono i tipo di dato, i vincoli, ecc.)</p>
+        <p>pg_catolg: catalogo di sistema (lo schema di PostgreSQL)</p>
+      </div>
+      <div>
+        <a name="p_conf"></a>
+        <h3 >Prima configurazione</h3>
+        <p>Accedo alla directory <code>/etc/postgresql/<em>9.4</em>/main</code> 9.4 è la versione di Postgres, potrebbe cambiare<br>
+        Apro con <code>sudo less pg_hba.conf</code>. <br>
+        Regole per Administratore <code>local all all    peer</code> permette di poter accedere con il nome di sitema al accesso con quel nome <br>
+        In generale:</p>
+        <p style="font-size: 12px;"> <code># TYPE  DATABASE        USER            ADDRESS                 METHOD <br>
+        # "local" is for Unix domain socket connections only <br>
+        local   all             all                                     peer <br>
+        # IPv4 local connections: <br>
+        host    all             all             127.0.0.1/32            md5 <br>
+        # IPv6 local connections: <br>
+        host    all             all             ::1/128                 md5 <br>
+        # Allow replication connections from localhost, by a user with the <br>
+        # replication privilege. <br>
+        #local   replication     postgres                                peer <br>
+        #host    replication     postgres        127.0.0.1/32            md5 <br>
+        #host    replication     postgres        ::1/128                 md5 <br>
+        </code> </p>
+      </div>
+      <div>
+        <h4>Dentro al documento pg_hba.conf:</h4>
+        <p> - Type: specifico la tipologia della connessione se host o local</p>
+        <p> - DB: specifica su quale DataBase viene effettuata quella regola</p>
+        <p> - User: quale utente può acccedere a quella regola</p>
+        <p> - CIDR-ADDR: quale indirizzo o gruppo di indirizzi può accedere alla regola</p>
+        <p> - METHOD: il metodo e di conseguenza la regoal da seguire se tutti i criteri precedenti erano giusti</p>
+      </div>
+      <div style="font-size: 6px">
+        <p>Al momento non utile</p>
+        <h3>Creazione di un DataBase</h3>
+        <p><code>CREATE DATABASE NomeDB<br>[ [WITH][OWNER[=] Username]<br>[ ENCODING [=] encoding]]</code> </p>
+      </div>
+      <div>
+        <a name="creaDataBase"></a>
+        <h3 >Creazione DataBase</h3>
+        <p>
+        <h4>Accesso a Postgres</h4>
+        <code>sudo su postgres</code> Accedo alla cartella di postgres. <br>
+        <code>psql <em>template 1</em></code> Entro in postgres nel (template 1)<br>
+        <code>create database <em>testdb</em>;</code> permette di creare un databse <br>
+        <h4>Comandi generali</h4>
+        <code>\l</code> mostra la lista dei DataBase<br>
+        <code>\c</code> spostarmi da un databse ad un'altro <br>
+        <code>\dt</code> mostra le relazioni (tabelle) che ci sono <br>
+        <code>\dn</code> mostra tutti gli schemi <br>
+        <h4>Creazione Schema</h4>
+        <code>create schema <em>imdb</em>;</code> crea un nuovo schema <br>
+        <code>set search_path = <em>imdb</em>;</code> vogli lavorare dentro allo schema imdb <br>
+        <a name="creaTabella"></a>
+        <h4>Creazione Tabella</h4>
+        creo un file name.sql nel quale andrò a scrivere la creazione delle tabelle <br>
+        copio i commenti sul terminale per eseguirli <br>
+      </p>
+      <p style="font-size: 12px;">
+        <code>CREATE TABLE <em>country</em> ( <br>
+          <em>iso3</em> char(3) PRIMARY KEY, <br>
+          <em>name</em> varchar(20) NOT NULL UNIQUE <br>
+        ); <br>
+        <br>
+        INSERT INTO <em>country(iso3, name)</em> VALUES <br>
+            <em>('USA', 'United States')</em>; <br>
+          INSERT INTO <em>country(iso3, name)</em> VALUES <br>
+              <em>('ITA', 'Italy')</em>; <br>
+        INSERT INTO <em>country(iso3, name)</em> VALUES <br>
+              <em>('FRA', 'France')</em>;</code> <br>
+      </p>
+      <br>
+      <p>
+        <code>UPDATE <em>produced</em> SET <em>movie</em> = <em>'0088763'</em> WHERE <em>movie</em> = <em>'0338751'</em>;</code>
+        Modifico una linea della tabella (produced) cercandolo dal valore (movie).
+      </p>
+      <p>
+        <code>DELETE FROM <em>produced</em> WHERE <em>movie</em> = <em>'0338751'</em>;</code>
+        Cancella una linea della tabella (produced) cercandolo dal valore (movie).
+      </p>
+      <br>
+      <p>
+        <code>select * from <em>country</em>;</code> restituisce una intera tabella (country) <br>
+        <code>DROP TABLE <em>country</em>;</code> elimina una tabella <br>
+        <code>\d <em>movie</em></code> mostra la descrizone della tabella (movie) <br>
+      </p>
+
+    </div>
+    <div>
+      <a name="Clausole"></a>
+      <h3>CLAUSOLE</h3>
+      <p>
+        Sulle Clausole di <code>REFERENCES</code> sono inserite per default 2 clausole: <code>ON UPDATE <em>NO ACTION</em>, ON DELETE <em>NO ACTION</em></code>.
+        Ovvero impedisco la modifica e/o l'eliminazione di quelle chiavi nella tabella principale. <br>
+        Le altre clausole sono:
+        <ul>
+          <li><code>ON UPDATE <em>CASCADE</em></code> Comporta una modifica in cascata. A ogni cambiamento della tabella principale viene modificato anche nella tabella secondaria</li>
+          <li><code>ON DELETE <em>CASCADE</em></code> Comporta una eliminazione in cascata. A ogni eliminazione della tabella principale viene eliminata anche nella tabella secondaria</li>
+          <li><code>ON UPDATE <em>SET NULL</em></code> Quando modifico la chiave principale. Nella tabella secondaria viene settata a null se non è chiave</li>
+          <li><code>ON DELETE <em>SET NULL</em></code> Quando elimino la chiave principale. Nella tabella secondaria viene settata a null se non è chiave</li>
+          <li><code>ON UPDATE <em>SET DEFAULT</em></code> Quando modifico la chiave principale. Nella tabella secondaria viene settata a defaul(se specificato, altrimenti null) se non è chiave</li>
+          <li><code>ON DELETE <em>SET DEFAULT</em></code> Quando elimino la chiave principale. Nella tabella secondaria viene settata a defaul(se specificato, altrimenti null) se non è chiave</li>
+        </ul>
+        <h4>Modifica di una clausola</h4>
+        <code>ALTER TABLE <em>produced</em> DROP CONSTRAINT <em>produced_movie_fkey</em>;</code> <br>
+        Tolgo la clausola (produced_movie_fkey) alla tabella (produced). <br>
+        <code>ALTER TABLE <em>produced</em> ADD CONSTRAINT <em>produced_movie_fkey</em> FOREIGN KEY (<em>movie</em>) REFERENCES <em>movie(id)</em> ON UPDATE <em>CASCADE</em> ON DELETE <em>NO ACTION</em>;</code> <br>
+        Aggiunge all'atributo (produced_movie_fkey)le clausole di chiave esterna e di (cascade) e (no action). <br>
+      </p>
+      <a name="dominio"></a>
+      <h3>Creazione di un dominio</h3>
+      <p>
+        <code>CREATE DOMAIN <em>possible_causes</em> AS <em>varchar(15)</em> CHECK
+        (value IN (<em>'plot', 'genre', 'hist period', 'setting'</em>));</code>
+        Creo il dominio per l'attributo(cause), ma in generale per qualsiasi cosa. <br>
+        <code>ALTER TABLE <em>sim</em> ALTER COLUMN <em>cause</em> TYPE <em>possible_causes</em>;</code>
+        Lo inserisco nella tabella (sim) all'atributo (cause) <br>
+        <code>ALTER TABLE <em>sim</em> ADD COLUMN <em>sim_score numeric(4,3)</em>;</code>
+        Inserisco un nuovo attributo (sim_score) alla tabella <br>
+      </p>
+
+      </div>
+
+
+    <!--Chiura finale della div riguardante l'articolo -->
+    </div>
+
+    </article>
+    </section>
+  </body>
+</html>

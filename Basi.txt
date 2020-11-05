@@ -1,0 +1,13 @@
+Algebra relazionale
+
+- Algebra degli insiemi (Solo se compatibili con l'unione)
+
+UNIONE: date 2 tabelle con gli stessi attributi con stesso dominio, la loro unione è l'isieme dei loro componenti presi una volta sola
+DIIFERENZA: date 2 tabelle con gli stessi attributi con stesso dominio, prendo i componenti della prima tabella purchè non siano presenti nella seconda tabella
+
+INTERSEZIONE: (A UNIONE B) - (A - B) - (B - A) :
+
+
+Altre Algebre
+
+- SELEZIONE: Sigmadic(R) : c è una condizione booleana grazie alla quale si estraggono alcune righe della tabella R

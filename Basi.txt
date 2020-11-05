@@ -10,4 +10,9 @@ INTERSEZIONE: (A UNIONE B) - (A - B) - (B - A) :
 
 Altre Algebre
 
-- SELEZIONE: Sigmadic(R) : c è una condizione booleana grazie alla quale si estraggono alcune righe della tabella R
+- SELEZIONE: Sigma[c](R) : c è una condizione booleana grazie alla quale si estraggono alcune righe della tabella R
+
+- PROIEZIONE: PiGreco[A,B](R) : restituisce un tabella con solo le colonne A e B eliminando gli attributi.
+
+
+- PRODOTTO CARTESIANO: A X B : Composizione tra tutti gli elementi del primo insieme con tutti gli elementi del secondo

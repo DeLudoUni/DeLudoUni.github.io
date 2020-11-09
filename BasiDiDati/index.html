@@ -32,8 +32,11 @@
           </ul>
           <li><a href="#Clausole">Clausole</a></li>
           <li><a href="#dominio">Creazione di un dominio</a></li>
-          <li><a href="#"></a></li>
-          <li><a href="#"></a></li>
+          <li><a href="#importdb">Importare DB esterno</a></li>
+          <li><a href="#funzioni">Crea funzione</a></li>
+          <ul class="ulg">
+            <li><a href="#cursore">Cursore</a></li>
+          </ul>
           <li><a href="#"></a></li>
         </ul>
       </nav>
@@ -42,7 +45,7 @@
 
     <div class= "generaldiv">
       <a name="introduzione"></a>
-      <h3 >Introduzione</h3>
+      <h3>INTRODUZIONE</h3>
       <code>Psql -U <em>stefano</em> -h <em>islab.di.unimi.it ospedale</em></code>
       <br>
       <p>L’utente stefano sta cercando di accedere in modo host al server ospedale.</p>
@@ -55,8 +58,9 @@
         <p>pg_catolg: catalogo di sistema (lo schema di PostgreSQL)</p>
       </div>
       <div>
+        <hr>
         <a name="p_conf"></a>
-        <h3 >Prima configurazione</h3>
+        <h3>PRIMA CONFIGURAZIONE</h3>
         <p>Accedo alla directory <code>/etc/postgresql/<em>9.4</em>/main</code> 9.4 è la versione di Postgres, potrebbe cambiare<br>
         Apro con <code>sudo less pg_hba.conf</code>. <br>
         Regole per Administratore <code>local all all    peer</code> permette di poter accedere con il nome di sitema al accesso con quel nome <br>
@@ -89,8 +93,9 @@
         <p><code>CREATE DATABASE NomeDB<br>[ [WITH][OWNER[=] Username]<br>[ ENCODING [=] encoding]]</code> </p>
       </div>
       <div>
+        <hr>
         <a name="creaDataBase"></a>
-        <h3 >Creazione DataBase</h3>
+        <h3 >CREAZIONE DATABASE</h3>
         <p>
         <h4>Accesso a Postgres</h4>
         <code>sudo su postgres</code> Accedo alla cartella di postgres. <br>
@@ -104,8 +109,9 @@
         <h4>Creazione Schema</h4>
         <code>create schema <em>imdb</em>;</code> crea un nuovo schema <br>
         <code>set search_path = <em>imdb</em>;</code> vogli lavorare dentro allo schema imdb <br>
+        <hr>
         <a name="creaTabella"></a>
-        <h4>Creazione Tabella</h4>
+        <h3>CREAZIONE TABELLA</h3>
         creo un file name.sql nel quale andrò a scrivere la creazione delle tabelle <br>
         copio i commenti sul terminale per eseguirli <br>
       </p>
@@ -140,6 +146,7 @@
 
     </div>
     <div>
+      <hr>
       <a name="Clausole"></a>
       <h3>CLAUSOLE</h3>
       <p>
@@ -160,8 +167,9 @@
         <code>ALTER TABLE <em>produced</em> ADD CONSTRAINT <em>produced_movie_fkey</em> FOREIGN KEY (<em>movie</em>) REFERENCES <em>movie(id)</em> ON UPDATE <em>CASCADE</em> ON DELETE <em>NO ACTION</em>;</code> <br>
         Aggiunge all'atributo (produced_movie_fkey)le clausole di chiave esterna e di (cascade) e (no action). <br>
       </p>
+      <hr>
       <a name="dominio"></a>
-      <h3>Creazione di un dominio</h3>
+      <h3>CREAZIONE DI UN DOMINIO</h3>
       <p>
         <code>CREATE DOMAIN <em>possible_causes</em> AS <em>varchar(15)</em> CHECK
         (value IN (<em>'plot', 'genre', 'hist period', 'setting'</em>));</code>
@@ -171,6 +179,54 @@
         <code>ALTER TABLE <em>sim</em> ADD COLUMN <em>sim_score numeric(4,3)</em>;</code>
         Inserisco un nuovo attributo (sim_score) alla tabella <br>
       </p>
+
+      </div>
+
+      <div>
+        <hr>
+        <a name="importdb"></a>
+        <h3>IMPORTARE UN DATABASE ESTERNO</h3>
+        <p>
+          Creo un nuvo database e poi lo inizializzo con
+          <code>psql -U <em>bdlab</em> -h <em>localhost imdb</em> < <em>indirizzo/database</em></code>
+        </p>
+      </div>
+      <div>
+        <hr>
+        <a name="funzioni"></a>
+        <h3>CREZIONE DI UNA FUNZIONE</h3>
+        <div class="codediv">
+          <code>CREATE OR REPLACE FUNCTION <em>get_movie_top_rating</em>( <em>paramentri_in_input</em> ) RETURNS <em>paramentri_in_output</em> AS $$ <br>
+            DECLARE <br>
+            <em>//Variabili se presenti</em> <br>
+            BEGIN <br>
+            <em>//Corpo della funzione</em> <br>
+            END; <br>
+            $$ language <em>'plpgsql'</em>;
+          </code>
+        </div>
+        <p>Qual'ora devo creare una funzione che restituisce più di un paramentro devo creare un nuovo tipo che contenga i paramentri.</p>
+        <br>
+        <p>Se cambio una funzione con i suoi parametri per sostituirla devo fare:</p>
+        <p> <code>DROP FUNCTION <em>get_movie_top_rating_revised(varchar(200))</em>;</code> Ovvero elimino la funzione precedente.</p> <br>
+        <p>Le funzioni possono avere lo stesso nome, ma paramentri diversi. Per questo quando elimino una funzione devo specificare anche il tipo in quanto potrebbero esistere più funzioni con lo stesso nome.</p>
+        <br>
+          <h4>Parametri in uscita</h4>
+          <p> <code>SETOF</code> prima del paramentro di usicta indica che possono essere restituiti più di un paramentro. </p> <br>
+          <h4>Dichiarazione</h4>
+          <p> <code>    <em>max_score rating.score</em>%TYPE;</code> Assegna alla variabile (max_score) il tipo di (rating.score). </p>
+          <p> <code> <em>m movie</em>%ROWTYPE</code> Assegna alla variabile (m) il tipo dellì'intera tabella (movie).</p> <br>
+          <h4>Corpo della funzione</h4>
+          <p> <code>lower</code> permette di ricercare le cose indifferentemente dalle minuscole o maiuscole. </p>
+          <p> <code>trim</code> elimina eventuali spazi bianchi prima o dopo il paramentro in input [non in mezzo].</p>
+          <p>I paramentri passati in input senza nome possono essere presi con $n dove n è laposizione dell'input ($1, $2, $3....).</p> <br>
+          <h4>Chiamata alla funzione</h4>
+          <p> <code>SELECT * FROM <em>get_movie_top_rating</em>('<em>inception</em>');</code> passo alla funzione il paramentro in ingresso. </p>
+          <br>
+          <a name="cursore"></a>
+          <h4>Cursore</h4>
+          <code><em>nome_cursore</em> CURSORE FOR <em>querry</em></code>
+          <p>Un cursore è utile perchè prende i risultati dalla queery uno alla volta permettendo di interagire maggiormente con i risultati. I cursori sono molto utili per gestire la memoria e non sovraccaricarla come un ciclo for.</p>
 
       </div>
 

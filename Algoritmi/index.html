@@ -27,40 +27,57 @@
 
       </nav>
 
-      <article>
+      <article class="article-alg">
 
-        <div>
-          <a name="aa"></a>
-          <h2>Algoritmo QuickSort</h2>
-          <h4>Procedimento</h4>
-          <p>Caso base: soluzione immediata (Array ordinati) <br>
-          Altrimenti: <br>
-                            • dividi l'Array in 2 parti. <br>
-                            • ordina le 2 parti separatamente. <br>
-                            • combina le soluzioni. <br>
-          </p>
-          <div class="codediv">
+        <div class="generaldiv">
+          <div>
+            <a name="aa"></a>
+            <h2>Algoritmo QuickSort</h2>
+            <h4>Procedimento</h4>
+            <p>Caso base: soluzione immediata (Array ordinati) <br>
+            Altrimenti: <br>
+                              • dividi l'Array in 2 parti. <br>
+                              • ordina le 2 parti separatamente. <br>
+                              • combina le soluzioni. <br>
+            </p>
+            <div class="codediv"><b>
             <pre>
 <em>ALGORITMO quickSort(Array A) <br> <br>
       IF</em> lunghezza di A > 1 <em>THEN</em> <br>
             scegli un elemento in A <br>
             <em>B <--</em> {y appartiene a A t.c. y <= x} <br>
             <em>C <--</em> {y appartiene a A t.c. y > x} <br>
-            <em>quickSort(</em>B<em>)</em> <code style="color:yellow">//Ricorsione</code> <br>
+            <em>quickSort(</em>B<em>)</em> <a style="color:#2F5C04">//Ricorsione</a> <br>
             <em>quickSort(</em>C<em>)</em> <br>
             A <-- concatenazione di B e di C <br>
 
 </pre>
+</b></div>
+
+
           </div>
+          <hr>
+          <div class="divflex">
+            <h2>ALBERI BINARI</h2>
+            <div class="divsep">
+            </div>
+            <img style="width: 30%; height:30%;" src="./immagini/AlberoBinario.png" alt="">
+          </div>
+          <div class="divflex">
+            <img style="width: 60%; height:60%;" src="./immagini/AlberoBinarioNomi.png" alt="">
+            <p>Gli alberi binari sono una struttura dati che può comprendere un albero vuoto oppure una radice e 2 sottalberi (che a loro volta saranno degli alberi o vuoti o composti da una radice e rispettivi sottoalberi). </p>
 
-
-        </div>
-        <div>
-          <p>
-            ciao sono Ludo
-            Io sono Denis
-            qualcosa
-          </p>
+          </div>
+          <div class"div-20">
+            <h4>Vista in un Albero Binario</h4>
+            <p>
+              Strategia generale:
+              <ul>
+                <li>visito la radice</li>
+                <li>ogni volta che visoto un nodo memorizzo in un insieme S i suoi figli. Successivamente prelevo da S.</li>
+              </ul>
+            </p>
+          </div>
         </div>
 
       </article>

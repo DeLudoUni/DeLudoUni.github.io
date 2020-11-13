@@ -15,4 +15,13 @@ Altre Algebre
 - PROIEZIONE: PiGreco[A,B](R) : restituisce un tabella con solo le colonne A e B eliminando gli attributi.
 
 
-- PRODOTTO CARTESIANO: A X B : Composizione tra tutti gli elementi del primo insieme con tutti gli elementi del secondo
+- PRODOTTO CARTESIANO: A X B : Composizione tra tutti gli elementi del primo insieme con tutti gli elementi del secondo.
+
+-  Rho : serve a ridenominare una colonna di una tabelal per poter essere usata più facilmente.
+
+- JOIN : selezione + prodotto cartesiano.
+
+- DIVISIONE : / : r(Z) / s(X) solo se X è contenuto in Z. selziono gli atributi della tabella r tali che abbaiano una corrispondenza con TUTTI i valori della seconda tabella.
+                  se r = vuoto --> r(X) vuota;     se s = vuoto --> r(X) piena;
+
+Regole di trasformazione

@@ -79,6 +79,11 @@ code {
   margin: 30px;
 }
 
+.imgtext {
+  margin: 0px;
+  margin-left: 20px;
+}
+
 div {
   font-size: 105%;
   margin-top: 40px;

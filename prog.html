@@ -1,0 +1,66 @@
+ITERAZIONE
+
+- Motivazione/Descrizione:
+
+  Esempio:
+      Classi Contenitori, classi che sono in grado di raccogliere oggetti di grandezze simili. Es: InstSet, Poly, Queue.
+      Voglio calcolare la somma di tutti gli elementi dell'insieme. Che sono oprzioni aggiuntive rispetto a quel contenitore (ad es. un insime di interi non è pensato per restituire la somma dei suoi interi).
+
+  Si vuole ottenere tutte quelle funzioni aggiuntive ad un contenitore.
+
+  Soluzioni: creare le funzioni interne (solo se appartente proprio al contenitore).
+             creare le funzioni in modo esterno (passando una copia della rappresentazione interna all'esterno) [Onerosa perchè fa una copia, perdita di tempo e memoria].
+             Meglio usare un ITERAZIONE ESTERNA.
+
+
+- Come vanno specificate:
+
+  Si crea un GENERATORE che dal contenitore estrae uno alla volta un oggetto tramite una copia.
+
+
+Interfaccia:
+            Sono un elenco di Metodi. Serve per definire che una determinata classe soddisfa una interfaccia. Di queste interfacce esiste ITERATOR<E>.
+
+            interface Iterator<E> { //Intertore presente dentro al contenitore per la Liskov
+              boolean hasNext();
+              E next();
+            }
+
+            Class SetElements Implements Iterator<Integer> { //Generatore per la Liskov
+            }
+
+
+        Interato it = o.iterator() //iterator è un metodo interno implementato da un'interfaccia
+        while(it.hasnext()) {
+          E x it.next()
+                  ...x....
+        }
+
+FOR EACH:
+          for( E x : o) { //dove o è l'iteratore
+
+          }
+
+Interfaccia che mi dice se qualcosa è iterabile:
+                                                  interface Iterabel<E> {
+                                                    iterator<e> iterator();
+                                                  }
+Una classe iterabile vuol dire che c'è esattamente un metodo di nome iteretor il quale restituisce un generatore di elementi (Iterator<e>)
+
+- GENERATORE: è un oggetto di una Classe che implementa un Iterator.
+
+Affinche la classe che genera il genratore deve essere dentro la classe contenitore.
+
+
+- Nested Class:
+                Static Nested Class:
+                                    Può avere attributi o classi. [New.Outer.Nested]
+                                    Può visualizzare tutte le variabili e i metodi della classe superiore anche se private.
+
+                Inner:
+                      Locali:
+
+                      Anonime:
+
+
+- Come vanno usate:

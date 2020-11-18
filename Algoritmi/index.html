@@ -26,7 +26,17 @@
     <section>
 
       <nav>
-        A
+        <ul class="navul">
+          <li><a href="#Alberibinari">Alberi Binari</a></li>
+          <ul class="ulg">
+            <li><a href="#vistaAlberi">Vista</a></li>
+            <li><a href="#BinarioRicerca">Albero di Ricerca</a></li>
+            <li><a href="#BRicercaRicerca">- Ricerca</a></li>
+            <li><a href="#BRicercaInserimento">- Inserimento</a></li>
+
+          </ul>
+
+        </ul>
 
       </nav>
 
@@ -60,6 +70,7 @@
 
           </div>
           <hr>
+          <a name="Alberibinari"></a>
           <div class="divflex">
             <h2>ALBERI BINARI</h2>
             <div class="divsep">
@@ -67,11 +78,21 @@
             <img style="width: 30%; height:30%;" src="https://raw.githubusercontent.com/DeLudoUni/DeLudoUni.github.io/master/Algoritmi/Immagini/AlberoBinario.png" alt="">
           </div>
           <div class="divflex">
-            <img style="width: 60%; height:60%;" src="https://raw.githubusercontent.com/DeLudoUni/DeLudoUni.github.io/master/Algoritmi/Immagini/AlberoBinarioNomi.png" alt="">
-            <p>Gli alberi binari sono una struttura dati che può comprendere un albero vuoto oppure una radice e 2 sottalberi (che a loro volta saranno degli alberi o vuoti o composti da una radice e rispettivi sottoalberi). </p>
+            <img style="width: 70%; height:70%;" src="https://raw.githubusercontent.com/DeLudoUni/DeLudoUni.github.io/master/Algoritmi/Immagini/AlberoBinarioNomi.png" alt="">
+            <p>Gli alberi binari sono una struttura dati che può comprendere un albero vuoto oppure una radice e 2 sottalberi (che a loro volta saranno degli alberi o vuoti o composti da una radice e rispettivi sottoalberi).
+              <br><br> Alberi binari: <br>
+                •      Caso base: Albero vuoto. <br>
+                •       Nodo con associati 2 alberi binari detti sottoalbero sinistro e sottoalbero destro. <br><br>
+                Il minimo numero di nodi di un albero h è: <em>h+1</em>. (Degenera in lista)<br>
+                Il massimo numero di nodi di un albero h è: <em>2 <sup>h+1</sup> - 1 </em>. (Albero completo)<br><br>
+                log<sub>2</sub> (n+1) -1  <=  h  <=  n-1
+
+            </p>
 
           </div>
           <div class"div-20">
+            <hr class="hr70"> <br>
+            <a name="vistaAlberi"></a>
             <h4>Vista in un Albero Binario</h4>
             <p>
               Strategia generale:
@@ -80,7 +101,167 @@
                 <li>ogni volta che visoto un nodo memorizzo in un insieme S i suoi figli. Successivamente prelevo da S.</li>
               </ul>
             </p>
+            <h4>Vista in ampiezza (Coda)</h4>
+            <div class="divflex">
+            <div class="codedivimg"> <b>
+              <pre>
+<em>ALGORITMO vistaAmpiezza( AlberoBinario r )</em> <br><br>
+    C « coda vuota <br>
+    C.<em>equeue</em>(r) <br>
+    <em>WHILE</em> NOT( C.isEmpty() ) <em>DO</em> <br>
+        n « c.<em>dequeue</em>() <br>
+        <em>IF</em> n != null <em>THEN</em> <br>
+            vista nodo associato a n <br>
+            c.<em>enqueue</em>(n.sx) <br>
+            c.<em>enqueue</em>(n.dx) <br>
+              </pre>
+            </b> </div>
+            <img class= "imgcode" style="width: 30%; height:25%;" src="https://raw.githubusercontent.com/DeLudoUni/DeLudoUni.github.io/master/Algoritmi/Immagini/vistaAmpiezza.png" alt="">
           </div>
+          <!---->
+            <h4>Vista in Profondità Anticipata ricorsiva </h4>
+            <div class="divflex">
+            <div class="codedivimg"><b>
+              <pre>
+<em>ALGORITMO visitaInProfondità( AlberoBinario r )</em> <br><br>
+    <em>IF</em> r != null <em>THEN</em> <br>
+        visita la radice <br>
+        <em>visitaInProfondità</em>(n.sx) <br>
+        <em>visitaInProfondità</em>(n.dx) <br>
+              </pre>
+            </b></div>
+              <img class= "imgcode" style="width: 25%; height:20%;" src="https://raw.githubusercontent.com/DeLudoUni/DeLudoUni.github.io/master/Algoritmi/Immagini/vistaProfonditaAnticipata.png" alt="">
+          </div>
+            <!---->
+            <h4>Vista in Profondità Simmetrica ricorsiva </h4>
+            <div class="divflex">
+            <div class="codedivimg"><b>
+              <pre>
+<em>ALGORITMO visitaInProfondità( AlberoBinario r )</em> <br><br>
+    <em>IF</em> r != null <em>THEN</em> <br>
+        <em>visitaInProfondità</em>(n.sx) <br>
+        visita la radice <br>
+        <em>visitaInProfondità</em>(n.dx) <br>
+              </pre>
+            </b></div>
+            <img class= "imgcode" style="width: 25%; height:20%;" src="https://raw.githubusercontent.com/DeLudoUni/DeLudoUni.github.io/master/Algoritmi/Immagini/vistaProfonditaSimmetrica.png" alt="">
+          </div>
+            <!---->
+            <h4>Vista in Profondità Posticipata ricorsiva </h4>
+            <div class="divflex">
+            <div class="codedivimg"><b>
+              <pre>
+<em>ALGORITMO visitaInProfondità( AlberoBinario r )</em> <br><br>
+    <em>IF</em> r != null <em>THEN</em> <br>
+        <em>visitaInProfondità</em>(n.sx) <br>
+        <em>visitaInProfondità</em>(n.dx) <br>
+        visita la radice <br>
+              </pre>
+            </b></div>
+            <img class= "imgcode" style="width: 25%; height:20%;" src="https://raw.githubusercontent.com/DeLudoUni/DeLudoUni.github.io/master/Algoritmi/Immagini/vistaProfonditaPosticipata.png" alt="">
+          </div>
+          <p>Sono le viste usate nelle espressioni matematiche. Esse usano la Notazione Polacca Inversa.</p> <br>
+          <hr class="hr70">
+            <!---->
+          </div>
+          <div class="div-20">
+            <a name="BinarioRicerca"></a>
+            <h4>Alberi Binari di Ricerca</h4>
+            <p>Preso un nodo, il suo sottoalbero sinstro è composta da tutte le chiavi minori del node, mentre il sottoalbero destro è composto da tutte le chiavi che sono maggiori o uguali al nodo. <br>
+            </p> <br>
+            <!---->
+            <div class="divflex">
+              <div class="div-0" style="width:48%">
+                <a name="BRicercaRicerca"></a>
+                <h4>Ricerca ricorsiva</h4><b>
+                <div class="codedivimg">
+                  <pre>
+<em>Funzione trova( AlberoRicerca r, chiave k ) --> Nodo </em> <br><br>
+    <em>IF</em> r = null <em>THEN</em> <br>
+        <em>RETURN</em> null <br>
+    <em>ELSE IF</em> k < r.chiave <em>THEN</em> <br>
+        <em>RETURN trova</em>( r.sx, k ) <br>
+    <em>ELSE IF</em> k > r.chiave <em>THEN</em> <br>
+        <em>RETURN trova</em>( r.dx, k ) <br>
+    <em>ELSE RETURN</em> r
+                  </pre>
+                </b></div>
+              </div>
+              <div class="div-0" style="width:4%"></div>
+              <div class="div-0" style="width:48%">
+                <h4>Ricerca interattiva</h4><b>
+                <div class="codedivimg">
+                  <pre>
+<em>Funzione trova( AlberoRicerca r, chiave k ) --> Nodo </em> <br><br>
+    n « r <br>
+    <em>WHILE</em> n != null AND n.chiave != k <em>DO</em> <br>
+        <em>IF</em> k < n.chiave <em>THEN</em> <br>
+            n « n.sx <br>
+        <em>ELSE</em> <br>
+            n « n.dx <br>
+    <em>ELSE RETURN</em> n
+                  </pre>
+                </b></div>
+              </div>
+              </div>
+              <p>N° di confronti nel caso peggiore: AltezzaAlbero + 1.</p> <br>
+              <div class="divflex">
+                <div class="div-0" style="width:48%">
+                  <a name="BRicercaInserimento"></a>
+                  <h4>Inserimento Ricorsivo</h4>
+                  <div class="codedivimg"><b>
+                    <pre>
+<em>Funzione inserimento( AlberoRicerca r, elemento d )
+          --> AlberoRicerca</em> <br><br>
+    k « d.chiave <br>
+    <em>IF</em> r = null <em>THEN</em> <br>
+        r « riferimento a nuovo nodo
+        r.chiave « k
+        r.atricampi « d.altricampi
+        r.sx « null
+        r.dx « null <br>
+    <em>ELSE IF</em> k < r.chiave <em>THEN</em> <br>
+        r.sx « <em>inserisci</em>( r.sx, d ) <br>
+    <em>ELSE</em> <br>
+        r.dx « <em>inserisci</em>( r.dx, d ) <br>
+    <em>RETURN</em> r <br>
+                    </pre>
+                  </b></div>
+                </div>
+                <div class="div-0" style="width:4%"></div>
+                <div class="div-0" style="width:48%">
+                  <h4>Inserimento Iterativo</h4>
+                  <div class="codedivimg"><b>
+                    <pre>
+<em>Funzione inserimento( AlberoRicerca r, elemento d )
+          --> AlberoRicerca</em> <br><br>
+    k « d.chiave <br>
+    t « riferimento a nuovo nodo
+    t.chiave « k
+    t.atricampi « d.altricampi
+    t.sx « null
+    t.dx « null <br>
+    padre « null
+    n « r <br>
+    <em>WHILE</em> n != null <em>DO</em> <br>
+        padre « n <br>
+        <em>IF</em> k < n.chiave <em>THEN</em> n « n.sx <br>
+        <em>ELSE</em> n « n.dx <br>
+    <em>IF</em> padre = null <em>THEN</em> r « t <br>
+    <em>ELSE IF</em> k < padre.chiave <em>THEN</em> padre.sx « t <br>
+    <em>ELSE</em>  padre.dx « t <br>
+    <em>RETURN</em> r <br>
+                    </pre>
+                  </b></div>
+                </div>
+              <!--Chiusura div-flex-->
+              </div>
+              <p>N° di confronti: AltezzaAlbero.</p>
+              <!-- Chiusura div-20-->
+            </div>
+            <hr class="hr70">
+          </div>
+        <!-- Chiusura div generale-->
         </div>
 
       </article>

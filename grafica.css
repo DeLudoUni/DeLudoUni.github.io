@@ -50,12 +50,27 @@ code {
 }
 
 .codediv {
+  margin-top: 20px;
   margin-right: 40%;
   font-family: Consolas,"courier new";
   color: #204A87;
   background-color: #cccccc;
   padding: 2px;
   font-size: 95%;
+}
+
+.codedivimg {
+  margin-top: 20px;
+  margin-right: 0px;
+  font-family: Consolas,"courier new";
+  color: #204A87;
+  background-color: #cccccc;
+  padding: 2px;
+  font-size: 95%;
+}
+
+.imgcode {
+  margin: 30px;
 }
 
 div {
@@ -114,4 +129,8 @@ em {
 .geDiagramContainer {
   width: 150%;
   height: 150%;
+}
+
+.hr70 {
+  width: 70%;
 }

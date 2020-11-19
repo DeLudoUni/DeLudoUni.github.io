@@ -152,3 +152,42 @@ em {
   color: #f1f1f1;
   text-decoration: none;
 }
+
+.ul-null {
+  margin: 0px;
+}
+
+.table-a {
+  border: 1px solid;
+  text-decoration: none;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.td-a {
+  border: 1px solid;
+  text-align: left;
+  padding: 8px;
+}
+
+.td-b {
+  border: 1px solid;
+  text-align: center;
+  padding: 8px;
+}
+
+td {
+  text-align: center;
+}
+
+.th-a {
+  border: 1px solid;
+  text-align: left;
+  padding: 8px;
+}
+
+.th-b {
+  border: 1px solid;
+  text-align: center;
+  padding: 8px;
+}

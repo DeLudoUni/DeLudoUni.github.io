@@ -27,6 +27,9 @@
 
       <nav>
         <ul class="navul">
+          <li><a class="a-null" href="#introduzione">Introduzione</a></li>
+          <li><a class="a-null" href="#criteri">Criteri e Complessità</a></li>
+          <li><a class="a-null" href="#quicksort">Algoritmo QuickSort</a></li>
           <li><a class="a-null" href="#Alberibinari">Alberi Binari</a></li>
           <ul class="ulg">
             <li><a class="a-null" href="#vistaAlberi">Vista</a></li>
@@ -45,8 +48,148 @@
       <article class="article-alg">
 
         <div class="generaldiv">
+          <div class="div-20">
+            <a name="introduzione"></a>
+            <h2>Introduzione</h2>
+            <p> <b>ALGORITMI:</b> insieme ordinato e finito di pasi eseguibili e non ambigui che definiscono un procedimento che termina. <br><br>
+              Progettazione:
+              <ul class="ul-null">
+                <li>Correttezza (Risolvere quello per cui è stato pensato).</li><br>
+                <li>Efficienza -> Analisi delle Risorse (<b>Tempo, Spazio,</b> Rete, Processore, Energia).</li>
+              </ul> <br>
+              <b>Programma:</b> Insieme ordinato e finito di istruzioni scritte secondo le regole di uno specifico linguaggio di programmazione.
+            </p><br>
+            <hr class="hr70"> <br>
+            <!---->
+            <h3>Tabelle riassuntive Complessità Algoritmi</h3>
+            <br>
+            <table class="table-a">
+              <tr class="tr-a">
+                <th class="th-a">Nome Algoritmo</th>
+                <th class="th-b">Tempo</th>
+                <th class="th-b">Spazio</th>
+              </tr>
+              <tr class="tr-a">
+                <td class="td-a">Prodotto Iterativo</td>
+                <td class="td-b"> Θ(n) </td>
+                <td class="td-b"> Θ(1) </td>
+              </tr>
+              <tr class="tr-a">
+                <td class="td-a">Potenza ricorsiva</td>
+                <td class="td-b"> Θ(lg n) </td>
+                <td class="td-b"> Θ(lg n) </td>
+              </tr>
+              <tr class="tr-a">
+                <td class="td-a">Potenza alla Russa</td>
+                <td class="td-b"> Θ(lg n) </td>
+                <td class="td-b"> Θ(1) </td>
+              </tr>
+              <tr class="tr-a">
+                <td class="td-a"></td>
+                <td class="td-b"></td>
+                <td class="td-b"></td>
+              </tr>
+              <tr class="tr-a">
+                <td class="td-a"></td>
+                <td class="td-b"></td>
+                <td class="td-b"></td>
+              </tr>
+              <tr class="tr-a">
+                <td class="td-a"></td>
+                <td class="td-b"></td>
+                <td class="td-b"></td>
+              </tr>
+              <tr class="tr-a">
+                <td class="td-a"></td>
+                <td class="td-b"></td>
+                <td class="td-b"></td>
+              </tr>
+            </table> <br>
+            <hr class="hr70"> <br>
+            <!---->
+            <h3>Algoritmo moltiplicativo alla Russa</h3>
+            <p>L'algoritmo si basa sulla moltiplicazione del moltiplicando per 2 e la divisione del moltiplicatore per 2. Ogni volta che il moltiplicatore è dispari si prende il moltiplicando. La somma di quest'ultimi è la soluzione della moltiplicazione. <br>Ad esempio: 19 * 114 </p>
+            <table style="width:60%; text-decoration: none; border: 1px solid">
+              <tr style="text-decoration: none; border: 1px solid">
+                <th>Moltiplicando(a)</th>
+                <th>Moltiplicatore(b)</th>
+                <th>Risultati parziali</th>
+              </tr>
+              <tr>
+                <td>19</td>
+                <td>114</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>38</td>
+                <td style="color:red">57</td>
+                <td>38</td>
+              </tr>
+              <tr>
+                <td>76</td>
+                <td>28</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>152</td>
+                <td>14</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>304</td>
+                <td style="color:red">7</td>
+                <td>304</td>
+              </tr>
+              <tr>
+                <td>608</td>
+                <td style="color:red">3</td>
+                <td>608</td>
+              </tr>
+              <tr>
+                <td>1216</td>
+                <td style="color:red">1</td>
+                <td>1216</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td style="text-decoration: none; border: 1px solid">2166</td>
+              </tr>
+            </table> <br>
+            <hr class="hr70"> <br>
+            <!---->
+            <a name="criteri"></a>
+            <h3>Criteri di costo uniforme</h3>
+            <p>Ogni istruzione elementare utilizza un unità di tempo. <br>
+              Ogni variabile elementare utilizza un unità di spazio indipendte. <br> <br>
+              <b>Criterio di costo logaritmico:</b> Proporzionale alla lunghezza dei valori coinvolti. <br>
+            </p>
+            <h3>Complessità di Algoritmi</h3>
+            <p>La complessità in tempo viene definita come funzione T : N --> N della lunghezza dell'input. <br>
+              <ul class="ul-null">
+                <li>Caso peggiore</li>
+                <li>Caso migliore</li>
+                <li>Caso medio</li>
+              </ul>
+             </p>
+             <h4>Complessità rispetto al tempo:</h4>
+             <p>Trovare un algoritmo A che risolve un problema P in tempo O(T(n)) <br>
+                       tale che il tempo sia sufficiente per risolvere P. <br>
+               Dimostrare che ogni altro algoritmo che risolve P utilizza tempo Ω(T(n)).
+             </p>
+             <h4>Comlpessità rispetto allo spazio:</h4>
+             <p>P ha complessità O(f(n)) rispetto a R quando esiste un algoritmo che risolve P il cui costo di esecuzione è O(f(n)). <br>
+               P ha complessità O(g(n)) rispetto a R quando ogni algoritmo che risolve R ha complessità Ω(g(n)).
+             </p>
+            <br>
+            <hr>
+            <!---->
+
+
+          <!-- Chiusira div-20-->
+          </div>
           <div>
-            <a name="aa"></a>
+            <a name="quicksort"></a>
             <h2>Algoritmo QuickSort</h2>
             <h4>Procedimento</h4>
             <p>Caso base: soluzione immediata (Array ordinati) <br>

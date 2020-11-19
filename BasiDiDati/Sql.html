@@ -14,3 +14,17 @@ Cancellazione
 DELETE FROM NomeTabella [WHERE Condizione]
 
 ORDER BY //Ordina in modo DESC e ASC le righe
+
+GROUP BY //SERVE PER RAGGRUPPARE
+
+- Solo sui dati numerici:
+MAX, MIN, MEDIA, CONTARE
+
+SELECT COUNT(R.movie), SUM(R.votes), AVG(R.votes), MAX(R.score), MIN(R.score)
+FROM imdb.rating AS R
+
+COUNT(*) //conta le righe della colonna
+
+COUNT(DISTINCT __) //conta i valori univoci
+
+HAVING //Agisce sulla tabella prodotta, non prima come il WHERE

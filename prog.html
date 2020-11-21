@@ -56,11 +56,29 @@ Affinche la classe che genera il genratore deve essere dentro la classe contenit
                 Static Nested Class:
                                     Può avere attributi o classi. [New.Outer.Nested]
                                     Può visualizzare tutte le variabili e i metodi della classe superiore anche se private.
+                                    Gli oggetti della classe interna non hanno niente a che vedere con i valori eserni. Non possono accedere alle istanze delle classi. Si può solo tramite un costruttore interno a cui viene passata l'istanza dell'oggetto esterno.
 
                 Inner:
+                      Posso vedere gli oggetti della classe esterna. Per la sua creazione si può usare x = new X(); [classe esterna] quindi fare y = x.new.Y(); [classe interna].
+                      La nozione di istanza interna può essere associata solo e soltanto ad una istanza esterna. Non può essere preso esternamente.
                       Locali:
 
                       Anonime:
+                              Classe scritta dentro un metodo.
+                              Class x {
+                                    metodo f {
+                                          new I() {  }; //Espressione dove I è l'intefaccia.
+                                    }
+                              }
 
 
-- Come vanno usate:
+
+
+- Specificazione: nella documentazione dell'iteratore (secondo la Liskov). [Metodi che implementano un generatore].
+
+Invariante di Rapprsentazione: documentazione codice del generatore (Liskov). [Stato del generatore].
+
+- Implementazione:
+
+    Contenitore: con il suo stato privato
+    Generatore: con il suo stato pubblico (Deve poter comunicare con il contenitore).

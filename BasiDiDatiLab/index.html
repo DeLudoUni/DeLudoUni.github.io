@@ -222,10 +222,10 @@
           <h4>Corpo della funzione</h4>
           <p> <code>lower</code> permette di ricercare le cose indifferentemente dalle minuscole o maiuscole. </p>
           <p> <code>trim</code> elimina eventuali spazi bianchi prima o dopo il paramentro in input [non in mezzo].</p>
-          <p>I paramentri passati in input senza nome possono essere presi con $n dove n è laposizione dell'input ($1, $2, $3....).</p> <br>
+          <p>I paramentri passati in input senza nome possono essere presi con $n dove n è laposizione dell'input ($1, $2, $3....). <br> <br>
+          <code>PERFORM * FROM </code> esegue la querry ma butta via i risultati. <br> </p>
           <h4>Chiamata alla funzione</h4>
           <p> <code>SELECT * FROM <em>get_movie_top_rating</em>('<em>inception</em>');</code> passo alla funzione il paramentro in ingresso. <br>
-            <code>PERFORM * FROM </code> esegue la querry ma butta via i risultati. <br>
            </p>
           <br>
           <a name="cursore"></a>
@@ -281,13 +281,15 @@
         </p>
         <p>
           <code>EXCEPTION WHEN</code> Usato per gestire eccezioni sollevate durante l'esecuzione del codice. <br>
+          <code>TG_OP = 'INSERT | DELETE | UPDATE'</code> mi segna quando un Trigger è stato evocato dopo una INSERT, DELETE o UPDATE. <br>
 
         </p>
       </div>
+      <hr class="hr70">
       <div>
         <a name="vista_materailizzata"></a>
         <h3>Vista Materializzata</h3>
-        <p> é una visione dei dati che cambia al cambiare del database</p>
+        <p> é una visione dei dati che cambia al cambiare del database.</p>
 
       </div>
 

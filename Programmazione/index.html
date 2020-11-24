@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="IT">
+
+  <head>
+      <meta http-equiv="content-type" content="text/html;
+       charset=UTF-8">
+       <link rel="stylesheet" type="text/css" href="../grafica.css">
+      <title>Appunti Programmazione</title>
+
+      <link rel="icon" href="./../icon.png" type="image/x-icon" />
+      <link rel="shortcut icon" href="./../icon.png" type="image/x-icon" />
+
+  </head>
+
+  <body>
+
+    <section style="background-color: #113448">
+      <nav  class="navgeneral" style="width: 10%;">
+        <h2><a href="./..">Homepage</a></h2>
+      </nav>
+      <header style="width: 90%;">
+        <h2>Appunti di Programmazione (JAVA) - Teoria</h2>
+      </header>
+    </section>
+
+    <section>
+
+      <nav>
+        <ul class="navul">
+          <li><a class="a-null" href="#introduzione">A</a></li>
+
+        </ul>
+      </nav>
+
+    <article>
+      <div class="generaldiv">
+        <div class="div-20">
+          <p>
+            ITERAZIONE
+
+            - Motivazione/Descrizione:
+
+              Esempio:
+                  Classi Contenitori, classi che sono in grado di raccogliere oggetti di grandezze simili. Es: InstSet, Poly, Queue.
+                  Voglio calcolare la somma di tutti gli elementi dell'insieme. Che sono oprzioni aggiuntive rispetto a quel contenitore (ad es. un insime di interi non è pensato per restituire la somma dei suoi interi).
+
+              Si vuole ottenere tutte quelle funzioni aggiuntive ad un contenitore.
+
+              Soluzioni: creare le funzioni interne (solo se appartente proprio al contenitore).
+                         creare le funzioni in modo esterno (passando una copia della rappresentazione interna all'esterno) [Onerosa perchè fa una copia, perdita di tempo e memoria].
+                         Meglio usare un ITERAZIONE ESTERNA.
+
+
+            - Come vanno specificate:
+
+              Si crea un GENERATORE che dal contenitore estrae uno alla volta un oggetto tramite una copia.
+
+
+            Interfaccia:
+                        Sono un elenco di Metodi. Serve per definire che una determinata classe soddisfa una interfaccia. Di queste interfacce esiste ITERATOR<E>.
+
+                        interface Iterator<E> { //Intertore presente dentro al contenitore per la Liskov
+                          boolean hasNext();
+                          E next();
+                        }
+
+                        Class SetElements Implements Iterator<Integer> { //Generatore per la Liskov
+                        }
+
+
+                    Interato it = o.iterator() //iterator è un metodo interno implementato da un'interfaccia
+                    while(it.hasnext()) {
+                      E x it.next()
+                              ...x....
+                    }
+
+            FOR EACH:
+                      for( E x : o) { //dove o è l'iteratore
+
+                      }
+
+            Interfaccia che mi dice se qualcosa è iterabile:
+                                                              interface Iterabel<E> {
+                                                                iterator<e> iterator();
+                                                              }
+            Una classe iterabile vuol dire che c'è esattamente un metodo di nome iteretor il quale restituisce un generatore di elementi (Iterator<e>)
+
+            - GENERATORE: è un oggetto di una Classe che implementa un Iterator.
+
+            Affinche la classe che genera il genratore deve essere dentro la classe contenitore.
+
+
+            - Nested Class:
+                            Static Nested Class:
+                                                Può avere attributi o classi. [New.Outer.Nested]
+                                                Può visualizzare tutte le variabili e i metodi della classe superiore anche se private.
+                                                Gli oggetti della classe interna non hanno niente a che vedere con i valori eserni. Non possono accedere alle istanze delle classi. Si può solo tramite un costruttore interno a cui viene passata l'istanza dell'oggetto esterno.
+
+                            Inner:
+                                  Posso vedere gli oggetti della classe esterna. Per la sua creazione si può usare x = new X(); [classe esterna] quindi fare y = x.new.Y(); [classe interna].
+                                  La nozione di istanza interna può essere associata solo e soltanto ad una istanza esterna. Non può essere preso esternamente.
+                                  Locali:
+
+                                  Anonime:
+                                          Classe scritta dentro un metodo.
+                                          Class x {
+                                                metodo f {
+                                                      new I() {  }; //Espressione dove I è l'intefaccia.
+                                                }
+                                          }
+
+
+
+
+            - Specificazione: nella documentazione dell'iteratore (secondo la Liskov). [Metodi che implementano un generatore].
+
+            Invariante di Rapprsentazione: documentazione codice del generatore (Liskov). [Stato del generatore].
+
+            - Implementazione:
+
+                Contenitore: con il suo stato privato
+                Generatore: con il suo stato pubblico (Deve poter comunicare con il contenitore).
+            </p>
+            <hr>
+            <h2>EREDITARIETÀ</h2>
+            <p>Possibilità di utilizzare i metodi di una gerarchia andando verso l'alto.</p>
+            <h3>Perchè sviluppare una gerarchia?</h3>
+            <p>Per poter rappresentare oggetti che sono simili, ma hanno alcuni comportamenti diversi.</p>
+            <ul>
+              <li>                                          -  Vogliamo specializzare il comportamento di certi oggetti sottotipi di un'altro. (Stessi metodi, ma implementati diversamente affinche faccino cose diverse).</li>
+              <li>                                          -  Vogliamo estendere il comportamento. Padre: insieme di interi; Figlio: insieme di interi ordinato.(Aggiunta di metodi).</li>
+              <li>                                          -  Si vogliono avere diverse implementazione (Il metodo fa la stessa cosa, ma tenendo conte diverse implementazioni). Non ha bisogno di specificazione in quanto si comporta allo stesso modo.</li>
+              <li>                                          -  Ricalcare "Ontologica" (Eccezioni - Gerarchia esistende da rispecchiare sui diversi tipi [astratta]).</li>
+            </ul>
+            <br>
+            <h4>Principio di Sostituizone della Liskov:</h4>
+            <p>             Le istanze della classe padre devono poter essere sempre aggiunte ad una classe figlia.</p>
+            <br>
+            <h3>Come si può fare?</h3>
+            <p>Gli assegnamenti e i parametri posso passarli sempre un sottotipo. (Es: Number x = new Double(3); //Dove Double è figlio di Number). <br>
+            Espressioni: </p>
+            <ul>
+              <li>- Tipo apparente (Può essere deciso dal compilatore). [Contenitore grande]</li>
+              <li>- Tipi concreti: in esecuzione determinano il vero tipo della funzione (Deve essere eseguito solo attraverso RunTime). [Contenitore piccolo]</li>
+            </ul>
+            <br>
+            <h3>Dispatching:</h3>
+            <ul>
+              <li>
+                <p>x.f(e0, e1,....)
+                Non è possibile determinare il tipo concreto in fase di compilazione, in quanto il metodo potrebbe essere presente in divere classi. D'altro canto è molto importante riuscire a capire quale metodo invocare in Esecuzione. <br>
+               Si risolve con: </p>
+               <ul>
+                 <li>
+                   <p>A tempo di compilazione:</p>
+                   <ul>
+                     <li>1) se Esiste f (con il tipo apparente di x e isuoi super tipi).</li>
+                     <li>2) segnatura (andando a prendere la segnatura più specifica).</li>
+                   </ul>
+                 </li>
+                 <li>
+                   <p>A tempo di Esecuzione:</p>
+                   <ul>
+                     <li>3) Dispatching - scegliere qual è il metodo appropriato utilizzando il tipo concreto.</li>
+                   </ul>
+                 </li>
+               </ul>
+              </li>
+            </ul>
+            <br>
+            <h3>Come si specificano?</h3>
+            <ul>
+              <li>  - In alcuni sottotipi nno c'è bisgono di specificare perchè fanno le stesse cose del super tipo.</li>
+              <li>- Qual'ora sia un'estensione di una classe, si rifà al supertipo e specifica i metodi aggiuntivi.</li>
+              <li>- Qual'ora la specificazione è diversa, bisogna speicficare i comportamenti aggiuntivi rifacendosi al super tipo, aggiungendo richieste, non modificandone le caratteristiche in quanto ereditarie.</li>
+            </ul>
+            <br>
+            <hr class="hr70">
+            <h3>Come si possono fare?</h3>
+            <ul>
+              <li> <b>interfaccia:</b>
+                          Un insieme di metodi con specificazione. I metodi sono privi di codice. Questo supertipo specifica il comportamento di tutti i figli senza specificarne come. Esso è molto usato quando si vuole avere diverse implementazioni della stessa cosa. Non può essere implementata. Implementano.</li> <br>
+              <li><b>Classi astratte:</b>
+                              Una classe che implemneta alcuni metodi, mentre altri metodi determinano solo una specifica. Sono nel mezzo delle interfacce e delle classi concrete. Non possono essere implemntate, in quanto mancano dei metodi implementati. Estendono.</li> <br>
+              <li><b>Classi concrete:</b>
+                              Raccolta di metodi e di stato che realizza un insieme di comportamenti. Si può avere un'implementazione proria. Estendono.</li> <br>
+            </ul>
+            <h3>Perchè usare queste 3 differenze?</h3>
+            <ul>
+              <li><b>Interfacce:</b>
+                          Definire in modo specifico quali sono i comportamenti che devono avere le sue sottoclassi. In tal modo mi assicuro che tutta la gerarchia che parte dalle Interfacce implemneta tali metodi in modo proprio in base alla propria implementazione.</li>
+              <li><b>Classi astratte:</b>
+                              Implementati per la codivisione del codice, vecchio java. Esse hanno sempre delle classi inferiori che implemnetano le parti mancanti della classe astratta.</li>
+              <li>
+                <b>Classi concrete:</b>
+                <ul>
+                  <li> <b>Metodi:</b>
+                    <ul>
+                      <li>- Statici: Legati alla classe, di conseguenza non fanno parte della ereditarietà.</li>
+                      <li>- Istanza nuovi: non presenti nel super tipo.</li>
+                      <li>  - Istanza ereditati: presi dal super tipo. Non vengono implementati.</li>
+                      <li>- Istanze sovrascritti: presenti nel super tipo. Ma vengo implemnetati con la sovrascritti.</li>
+                      <li>  - Final: non vogliammo che venga sovrascritto da un sottotipo.</li>
+                    </ul>
+                  </li>
+                  <li> <b>Attributi:</b>
+                    <ul>
+                      <li>- Statici: non vengono ereditati.</li>
+                      <li>- Ereditati: vengono ereditati.</li>
+                      <li>- Nuovi: non presneti nella super classe.</li>
+                    </ul>
+                  </li>
+                  <li> <b>Invariante di Rappresentazione:</b> dovrà rifarsi sugli attributi nuovi e sulla super classe. </li>
+                  <li> <b>Funzione di astrazione: </b>"Principio di sostituzione" - l'oggetto non deve essere diverso. Di conseguenza la funzione di astrazione deve rimanere sostanzialmente invariata. </li>
+                </ul>
+              </li>
+            </ul>
+            <br>
+            <h3>Operatori di visibilità:</h3>
+            <ul>
+              <li> <b>- Public:</b> visibile a tutti.</li>
+              <li> <b>- Private: </b>visibile solo alla sua classe. </li>
+              <li> <b>- niente: </b>(Package private) visibile solo e soltanto all'interno dei pacchetti. </li>
+              <li> <b>- Protected: </b> Visibile a se stesso e alla sua sottoclasse. Da qualsiasi package.</li>
+            </ul>
+            <p>Un' ottimo modo per non dover passare la rappresentazione ad una sottoclasse è usare un iteratore.</p>
+
+
+        </div>
+        <!--Chiusura finale intero articolo-->
+      </div>
+
+
+    <!--Chiura finale della div riguardante l'articolo -->
+
+    </article>
+    </section>
+  </body>
+</html>

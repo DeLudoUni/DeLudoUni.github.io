@@ -82,3 +82,79 @@ Invariante di Rapprsentazione: documentazione codice del generatore (Liskov). [S
 
     Contenitore: con il suo stato privato
     Generatore: con il suo stato pubblico (Deve poter comunicare con il contenitore).
+
+----------------------------------------------------------------------------------------------------------------------------------
+EREDITARIETà
+
+Possibilità di utilizzare i metodi di una gerarchia andando verso l'alto.
+
+Perchè sviluppare una gerarchia?
+                              Per poter rappresnetare oggetti che sono simili, ma hanno alcuni comportamenti diversi.
+                              -  Vogliamo specializzare il comportamento di certi oggetti sottotipi di un'altro. (Stessi metodi, ma implementati diversamente affinche faccino cose diverse).
+                              -  Vogliamo estendere il comportamento. Padre: insieme di interi; Figlio: insieme di interi ordinato.(Aggiunta di metodi).
+                              -  Si vogliono avere diverse implementazione (Il metodo fa la stessa cosa, ma tenendo conte diverse implementazioni). Non ha bisogno di specificazione in quanto si comporta allo stesso modo.
+                              -  Ricalcare "Ontologica" (Eccezioni - Gerarchia esistende da rispecchiare sui diversi tipi [astratta]).
+
+Principio di Sostituizone della Liskov: Le istanze della classe padre devono poter essere sempre aggiunte ad una classe figlia.
+
+Come si può fare?
+                  Gli assegnamenti e i parametri posso passarli sempre un sottotipo. (Es: Number x = new Double(3); //Dove Double è figlio di Number).
+                  Espressioni:
+                              - Tipo apparente (Può essere deciso dal compilatore). [Contenitore grande]
+                              - Tipi concreti - in esecuzione determinano il vero tipo della funzione (Deve essere eseguito solo attraverso RunTime). [Contenitore piccolo]
+
+Dispatching:
+            x.f(e0, e1,....)
+            Non è possibile determinare il tipo concreto in fase di compilazione, in quanto il metodo potrebbe essere presente in divere classi. D'altro canto è molto importante riuscire a capire quale metodo invocare in Esecuzione. Si risolve con:
+                A tempo di compilazione:
+                                        1) se Esiste f (con il tipo apparente di x e isuoi super tipi).
+                                        2) segnatura (andando a prendere la segnatura più specifica).
+                A tempo di Esecuzione:
+                                      3) Dispatching - scegliere qual è il metodo appropriato utilizzando il tipo concreto.
+
+Come si specificano?
+                    - In alcuni sottotipi nno c'è bisgono di specificare perchè fanno le stesse cose del super tipo.
+                    - Qual'ora sia un'estensione di una classe, si rifà al supertipo e specifica i metodi aggiuntivi.
+                    - Qual'ora la specificazione è diversa, bisogna speicficare i comportamenti aggiuntivi rifacendosi al super tipo, aggiungendo richieste, non modificandone le caratteristiche in quanto ereditarie.
+
+
+----------Come si possono fare?-------------------
+interfaccia:
+            Un insieme di metodi con specificazione. I metodi sono privi di codice. Questo supertipo specifica il comportamento di tutti i figli senza specificarne come. Esso è molto usato quando si vuole avere diverse implementazioni della stessa cosa. Non può essere implementata. Implementano.
+
+Classi astratte:
+                Una classe che implemneta alcuni metodi, mentre altri metodi determinano solo una specifica. Sono nel mezzo delle interfacce e delle classi concrete. Non possono essere implemntate, in quanto mancano dei metodi implementati. Estendono.
+
+Classi concrete:
+                Raccolta di metodi e di stato che realizza un insieme di comportamenti. Si può avere un'implementazione proria. Estendono.
+
+Perchè usare queste 3 differenze?
+                                  Interfacce:
+                                              Definire in modo specifico quali sono i comportamenti che devono avere le sue sottoclassi. In tal modo mi assicuro che tutta la gerarchia che parte dalle Interfacce implemneta tali metodi in modo proprio in base alla propria implementazione.
+
+                                  Classi astratte:
+                                                  Implementati per la codivisione del codice, vecchio java. Esse hanno sempre delle classi inferiori che implemnetano le parti mancanti della classe astratta.
+
+                                  Classi concrete:
+                                                  Metodi:
+                                                          - Statici: Legati alla classe, di conseguenza non fanno parte della ereditarietà.
+                                                          - Istanza nuovi: non presenti nel super tipo.
+                                                          - Istanza ereditati: presi dal super tipo. Non vengono implementati.
+                                                          - Istanze sovrascritti: presenti nel super tipo. Ma vengo implemnetati con la sovrascritti.
+                                                          - Final: non vogliammo che venga sovrascritto da un sottotipo.
+                                                  Attributi:
+                                                            - Statici: non vengono ereditati.
+                                                            - Ereditati: vengono ereditati.
+                                                            - Nuovi: non presneti nella super classe.
+
+                                                  Invariante di Rappresentazione: dovrà rifarsi sugli attributi nuovi e sulla super classe.
+
+                                                  Funzione di astrazione: "Principio di sostituzione" - l'oggetto non deve essere diverso. Di conseguenza la funzione di astrazione deve rimanere sostanzialmente invariata.
+
+Operatori di visibilità:
+                        - Public: visibile a tutti.
+                        - Private: visibile solo alla sua classe.
+                        - niente: (Package private) visibile solo e soltanto all'interno dei pacchetti.
+                        - Protected: Visibile a se stesso e alla sua sottoclasse. Da qualsiasi package.
+
+                        Un' ottimo modo per non dover passare la rappresentazione ad una sottoclasse è usare un iteratore.

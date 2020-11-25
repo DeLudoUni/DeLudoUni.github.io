@@ -85,13 +85,14 @@ code {
 }
 
 div {
-  font-size: 105%;
+  font-size: 100%;
   margin-top: 40px;
   margin-bottom: 40px;
 }
 
 .generaldiv {
   margin: 20px;
+  font-size: 110%;
 }
 
 p {
@@ -121,6 +122,11 @@ em {
   margin: 0px;
 }
 
+.divnoflex {
+  display: solid;
+  margin: 0px;
+}
+
 .divsep {
   margin: 0px;
   width: 10%;
@@ -128,6 +134,14 @@ em {
 
 .div-0 {
   margin: 0px;
+}
+
+.div-5 {
+  margin: 5px;
+}
+
+.div-10 {
+  margin: 0px 0px 0px 10px;
 }
 
 .div-20 {
@@ -170,6 +184,12 @@ em {
   padding: 8px;
 }
 
+.td-text {
+  border: none;
+  text-align: left;
+  padding: 8px;
+}
+
 .td-b {
   border: 1px solid;
   text-align: center;
@@ -190,4 +210,8 @@ td {
   border: 1px solid;
   text-align: center;
   padding: 8px;
+}
+
+.acomment {
+  color:#2F5C04;
 }

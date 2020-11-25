@@ -16,7 +16,7 @@
 
     <section style="background-color: #113448">
       <nav  class="navgeneral" style="width: 10%;">
-        <h2><a href="./..">Homepage</a></h2>
+        <h2><a href="./../index.html">Homepage</a></h2>
       </nav>
       <header style="width: 90%;">
         <h2>Appunti di Programmazione (JAVA) - Teoria</h2>
@@ -27,7 +27,8 @@
 
       <nav>
         <ul class="navul">
-          <li><a class="a-null" href="#introduzione">A</a></li>
+          <li><a class="a-null" href="#iteratori">Iteratori</a></li>
+          <li><a class="a-null" href="#ereditarieta">Ereditarietà</a></li>
 
         </ul>
       </nav>
@@ -35,93 +36,168 @@
     <article>
       <div class="generaldiv">
         <div class="div-20">
+          <!--Introduction-->
+          <h2>Introduzione</h2>
+          <p>Al fine di poter realizzare progetti grandi, al quale vi lavorano più persone. È importante suddivide il proprio progetto in piccole parti inidpendeti che poi verranno collegate. <br>
+            Un'altro fattore molto importante è la descrizione del codice al fine di permettere la immediata comprensione ad'altra persona che vi ci interagisce. <br><br>
+            La soddivisione del codive in piccoli moduli deve garantire:
+          </p>
+          <ul>
+            <li>Ogni modolo deve avere lo stesso livello di dettaglio.</li>
+            <li>Ogni modulo beve poter essere risolto indipendentemente.</li>
+            <li>La combinazione della soluzione dei moduli deve produrre la soluzione del problema originale.</li>
+          </ul>
+          <h4>Astrazione</h4>
+          <p>L'astrazione ci permette di idividuare il problema non tenedo traccia di tutte le problematiche, questo ci permette di semplificare il problema in un primo momento in modo da rende la suddivisione in moduli molto più semplice.</p>
+          <!--Introduction-->
+        </div>
+        <hr>
+        <div class="div-20">
+          <!--JAVA-chapter2-->
+          <h2>Principi di Java</h2>
+          <p>Java è un linguaggio orientato ad oggetti. I suoi programmi sono costruiti da:</p>
+          <ul>
+            <li>Classi: utilizzate per definire:
+            <ul>
+              <li>Collezione di procedure (detti Metodi)</li>
+              <li>Nuovi tipi di Dato</li>
+            </ul>
+          </li>
+          <li>Interfacce</li>
+          </ul>
+          <h4>Package</h4>
+          <p>I package servono per raggruppare più classi e/o più interfacce. Essi servono come meccanismo di incampulamento che percìmette la comunicazione interna tra le diverse class ie interfacce, ma non permette la comunicazione verso l'esterno (a meno di apposite entità di visibilità). <br>
+          Un'altro loro scopo è quello di poter nominare un pacchetto. (Questo permette di avere metodi uguali in pacchetti diversi) </p>
+          <h4>Mutabilità degli oggetti</h4>
+          <p>Gli oggetti possono essere:</p>
+          <ul>
+            <li>Mutabili: possono cambiare nel tempo.</li>
+            <li>Immutabili: una volta inizializzati non possono essere più mutati. (Es. String)</li>
+          </ul>
+          <p>Chiamando un metodo di un oggetto mutazionale esso può modificare lo sato di tale oggetto nella sua istanza.</p>
+          <h2>Pagina 46</h2>
+
+          <!--JAVA-chapter2-->
+          <hr>
+        </div>
+        <div class="div-20">
           <p>
-            ITERAZIONE
+            <a name="iteratori"></a>
+            <h2>ITERAZIONE</h2>
+            <h4>Motivazione/Descrizione:</h4>
+            <p>Si vuole ottenere tutte quelle funzioni aggiuntive ad un contenitore. <br>
+            Soluzioni: </p>
+            <ul>
+              <li>creare le funzioni interne (solo se appartente proprio al contenitore).</li>
+              <li>creare le funzioni in modo esterno (passando una copia della rappresentazione interna all'esterno) [Onerosa perchè fa una copia, perdita di tempo e memoria].
+              Meglio usare un ITERAZIONE ESTERNA.</li>
+            </ul> <br>
+            <p> <b>Esempio:</b> Classi Contenitori, classi che sono in grado di raccogliere oggetti di grandezze simili. Es: InstSet, Poly, Queue.
+            Voglio calcolare la somma di tutti gli elementi dell'insieme. Che sono oprzioni aggiuntive rispetto a quel contenitore (ad es. un insime di interi non è pensato per restituire la somma dei suoi interi).</p> <br>
+            <h4>Come vanno specificate:</h4>
+            <p>Si crea un GENERATORE che dal contenitore estrae uno alla volta un oggetto tramite una copia.</p> <br>
+            <h4>Interfaccia:</h4>
+            <p>Sono un elenco di Metodi. Serve per definire che una determinata classe soddisfa una interfaccia. Di queste interfacce esiste ITERATOR<E>.</p>
+            <div class="codediv"><b>
+              <pre>
+Interface Iterator&ltE> { <a class="acomment">//Intertore presente dentro al contenitore per la Liskov</a>
+    boolean hasNext();
+    E next();
+}
 
-            - Motivazione/Descrizione:
-
-              Esempio:
-                  Classi Contenitori, classi che sono in grado di raccogliere oggetti di grandezze simili. Es: InstSet, Poly, Queue.
-                  Voglio calcolare la somma di tutti gli elementi dell'insieme. Che sono oprzioni aggiuntive rispetto a quel contenitore (ad es. un insime di interi non è pensato per restituire la somma dei suoi interi).
-
-              Si vuole ottenere tutte quelle funzioni aggiuntive ad un contenitore.
-
-              Soluzioni: creare le funzioni interne (solo se appartente proprio al contenitore).
-                         creare le funzioni in modo esterno (passando una copia della rappresentazione interna all'esterno) [Onerosa perchè fa una copia, perdita di tempo e memoria].
-                         Meglio usare un ITERAZIONE ESTERNA.
-
-
-            - Come vanno specificate:
-
-              Si crea un GENERATORE che dal contenitore estrae uno alla volta un oggetto tramite una copia.
-
-
-            Interfaccia:
-                        Sono un elenco di Metodi. Serve per definire che una determinata classe soddisfa una interfaccia. Di queste interfacce esiste ITERATOR<E>.
-
-                        interface Iterator<E> { //Intertore presente dentro al contenitore per la Liskov
-                          boolean hasNext();
-                          E next();
-                        }
-
-                        Class SetElements Implements Iterator<Integer> { //Generatore per la Liskov
-                        }
+Class SetElements Implements Iterator&ltInteger> { <a class="acomment">//Generatore per la Liskov</a>
+}
 
 
-                    Interato it = o.iterator() //iterator è un metodo interno implementato da un'interfaccia
-                    while(it.hasnext()) {
-                      E x it.next()
-                              ...x....
-                    }
+Interator it = o.iterator() <a class="acomment">//iterator è un metodo interno implementato da un'interfaccia</a>
+while(it.hasNext()) {
+E x it.next()
+      ...x....
+}
 
-            FOR EACH:
-                      for( E x : o) { //dove o è l'iteratore
+<a class="acomment">FOR EACH:</a>
+    for( E x : o) { <a class="acomment">//dove o è l'iteratore</a>
 
-                      }
+    }
+              </pre>
+            </b></div>
+            <p>Interfaccia che mi dice se qualcosa è iterabile:</p>
+            <div class="codediv"><b>
+              <pre>
+interface Iterabel<E> {
+    iterator&lte> iterator();
+}
+              </pre>
+            </b></div>
+            <p>Una classe iterabile vuol dire che c'è esattamente un metodo di nome iteretor il quale restituisce un generatore di elementi. (Iterator&lte>) <br>
 
-            Interfaccia che mi dice se qualcosa è iterabile:
-                                                              interface Iterabel<E> {
-                                                                iterator<e> iterator();
-                                                              }
-            Una classe iterabile vuol dire che c'è esattamente un metodo di nome iteretor il quale restituisce un generatore di elementi (Iterator<e>)
+            - GENERATORE: è un oggetto di una Classe che implementa un Iterator. <br>
 
-            - GENERATORE: è un oggetto di una Classe che implementa un Iterator.
+            Affinche la classe che genera il genratore deve essere dentro la classe contenitore.</p>
+            <h4>Nested Class:</h4>
 
-            Affinche la classe che genera il genratore deve essere dentro la classe contenitore.
+            <div class="divflex">
+              <div class="div-5">
+                <b>Static Nested Class:</b>
+              </div>
+              <div class="div-10">
+                <p>Può avere attributi o classi. [New.Outer.Nested] <br>
+                Può visualizzare tutte le variabili e i metodi della classe superiore anche se private. <br>
+                Gli oggetti della classe interna non hanno niente a che vedere con i valori eserni. <br>
+                Non possono accedere alle istanze delle classi. <br>
+                Si può solo tramite un costruttore interno a cui viene passata l'istanza dell'oggetto esterno.</p>
+              </div>
+            </div> <br>
+            <div class="divflex">
+              <div class="div-5">
+                <b>Inner:</b>
+              </div>
+              <div class="divnoflex">
+                <div class="divflex">
+                  <div class="div-5">
+                    <b>Locali:</b>
+                  </div>
+                  <div class="div-10">
+                    Posso vedere gli oggetti della classe esterna. Per la sua creazione si può usare x = new X(); [classe esterna] quindi fare y = x.new.Y(); [classe interna].
+                    La nozione di istanza interna può essere associata solo e soltanto ad una istanza esterna. Non può essere preso esternamente.
+                  </div>
+                </div> <br>
+                <div class="divflex">
+                  <div class="div-5">
+                    <b>Anonime:</b>
+                  </div>
+                  <div class="div-10">
+                    Classe scritta dentro un metodo.
+                    <div class="codediv">
+                      <pre>
+Class x {
+      metodo f {
+            new I() {  }; //Espressione dove I è l'intefaccia.
+      }
+}
+                      </pre>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p>
+              <b> Specificazione:</b> nella documentazione dell'iteratore (secondo la Liskov). [Metodi che implementano un generatore]. <br> <br>
+              <b>Invariante di Rapprsentazione:</b> documentazione codice del generatore (Liskov). [Stato del generatore]. <br><br>
+              <b>Implementazione:</b>
+            </p>
+            <ul>
+              <li> <b>Contenitore:</b> con il suo stato privato </li>
+              <li> <b>Generatore:</b> con il suo stato pubblico (Deve poter comunicare con il contenitore). </li>
+            </ul>
 
 
-            - Nested Class:
-                            Static Nested Class:
-                                                Può avere attributi o classi. [New.Outer.Nested]
-                                                Può visualizzare tutte le variabili e i metodi della classe superiore anche se private.
-                                                Gli oggetti della classe interna non hanno niente a che vedere con i valori eserni. Non possono accedere alle istanze delle classi. Si può solo tramite un costruttore interno a cui viene passata l'istanza dell'oggetto esterno.
-
-                            Inner:
-                                  Posso vedere gli oggetti della classe esterna. Per la sua creazione si può usare x = new X(); [classe esterna] quindi fare y = x.new.Y(); [classe interna].
-                                  La nozione di istanza interna può essere associata solo e soltanto ad una istanza esterna. Non può essere preso esternamente.
-                                  Locali:
-
-                                  Anonime:
-                                          Classe scritta dentro un metodo.
-                                          Class x {
-                                                metodo f {
-                                                      new I() {  }; //Espressione dove I è l'intefaccia.
-                                                }
-                                          }
 
 
-
-
-            - Specificazione: nella documentazione dell'iteratore (secondo la Liskov). [Metodi che implementano un generatore].
-
-            Invariante di Rapprsentazione: documentazione codice del generatore (Liskov). [Stato del generatore].
-
-            - Implementazione:
-
-                Contenitore: con il suo stato privato
-                Generatore: con il suo stato pubblico (Deve poter comunicare con il contenitore).
             </p>
             <hr>
+            <a name="ereditarieta"></a>
             <h2>EREDITARIETÀ</h2>
             <p>Possibilità di utilizzare i metodi di una gerarchia andando verso l'alto.</p>
             <h3>Perchè sviluppare una gerarchia?</h3>

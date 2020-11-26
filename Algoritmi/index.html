@@ -29,6 +29,10 @@
         <ul class="navul">
           <li><a class="a-null" href="#introduzione">Introduzione</a></li>
           <li><a class="a-null" href="#criteri">Criteri e Complessità</a></li>
+          <li><a class="a-null" href="#selectionsort">Algoritmo SelectionSort</a></li>
+          <li><a class="a-null" href="#insertionsort">Algoritmo InsertionSort</a></li>
+          <li><a class="a-null" href="#bubblesort">Algoritmo BubbleSort</a></li>
+          <li><a class="a-null" href="#mergesort">Algoritmo MergeSort</a></li>
           <li><a class="a-null" href="#quicksort">Algoritmo QuickSort</a></li>
           <li><a class="a-null" href="#Alberibinari">Alberi Binari</a></li>
           <ul class="ulg">
@@ -187,6 +191,121 @@
 
 
           <!-- Chiusira div-20-->
+          </div>
+          <div>
+            <a name="selectionsort"></a>
+            <h2>Algoritmo SelectionSort</h2>
+            <div class="codediv"> <b>
+              <pre>
+<em>ALGORITMO selectionSort( array A[0.....n+1] )</em> <br><br>
+    <em>FOR</em> K &lt-- 0 <em>TO</em> n-1 <em>DO</em> <br>
+    m &lt-- k <br>
+    <em>FOR</em> j &lt-- k+1 <em>TO</em> n-1 <em>DO</em> <br>
+        <em>IF</em> A[j] &lt A[m] <em>THEN</em> <br>
+            m &lt-- j <br>
+        <em>scambia</em> A[m] <em>con</em> A[k]
+              </pre>
+            </b></div>
+            <p>N° confronti per ciclo inteno: n - k - 1. <br>
+            N° confronti per ciclo: (n(n-1)) / 2 </p> <br>
+            <hr>
+            <!---->
+          </div>
+          <div>
+            <a name="insertionsort"></a>
+            <h2>Algoritmo InsertionSort</h2>
+            <div class="codediv"> <b>
+              <pre>
+<em>ALGORITMO insertionSort( Array A[0...n-1] )</em> <br> <br>
+    <em>FOR</em> k &lt 1 <em>TO</em> n-1 <em>DO</em> <br>
+        x &lt-- A[k] <br>
+        j &lt-- k-1 <br>
+        <em>WHILE</em> j >= 0 AND A[j] > x <em>DO</em> <br>
+            A[j+1] &lt-- A[j] <br>
+            j &lt-- j-1 <br>
+        A[j+1] &lt-- x
+              </pre>
+            </b></div>
+            <p>Confronti: al più k. <br>
+              Tempo: Θ(n<sup>2</sup>). <br>
+              Caso peggiore: Array ordinato al contrario. <br>
+              Caso migliore: Array ordinato.
+            </p> <br>
+            <hr>
+            <!---->
+          </div>
+          <div>
+            <a name="bubblesort"></a>
+            <h2>Algoritmo BubbleSort</h2>
+            <div class="codediv"> <b>
+              <pre>
+<em>ALGORITMO bubbleSort( Array A[0....n-1])</em> <br> <br>
+    i &lt 1 <br>
+    <em>DO</em> <br>
+        scambia &lt-- false <br>
+        <em>FOR</em> j &lt-- 1 <em>TO</em> n-i <em>DO</em> <br>
+            <em>IF</em> A[j] &lt A[j-1] <em>THEN</em> <br>
+                <em>scambia</em> A[j] <em>con</em> A[j-1] <br>
+                scambio &lt-- true <br>
+        i &lt-- i+1 <br>
+    <em>WHILE</em> scambio AND i < n
+              </pre>
+            </b></div>
+            <p>
+              N° confronti: al più n-1. <br>
+              Tempo: Θ(n<sup>2</sup>). <br>
+              Caso peggiore: Array ordinato al contrario. <br>
+              Caso migliore: Array ordinato.
+            </p> <br>
+            <hr>
+            <!---->
+          </div>
+          <div>
+            <a name="mergesort"></a>
+            <h2>Algoritmo mergeSort</h2>
+            <div class="codediv"> <b>
+              <pre>
+<em>ALGORITMO merge( Array B[0....lb-1], Array C[0....lc-1] )</em> <br> <br>
+    Sia X[0,.... lb+lc-1] un Array <br>
+    ib &lt-- 0
+    ic &lt-- 0
+    kx &lt-- 0 <br>
+    <em>WHILE</em> ib &lt lb AND ic &lt lc <em>DO</em> <br>
+        <em>IF</em> B[ib] &lt C[ic] <em>DO</em> <br>
+            x[kx] &lt-- B[ib] <br>
+            ib &lt-- ib+1 <br>
+        <em>ELSE</em> <br>
+            x[kx] &lt-- C[ic] <br>
+            ic &lt-- ic+1 <br>
+        kx &lt-- kx+1 <br>
+    <em>IF</em> ib &lt lb <em>THEN</em> <br>
+        <em>FOR</em> j &lt-- ib <em>TO</em> lb-1 <em>DO</em> <br>
+            x[kx] &lt-- B[j] <br>
+            k &lt-- k+1 <br>
+    <em>ELSE</em>
+        <em>FOR</em> j &lt-- ic <em>TO</em> lc-1 <em>DO</em> <br>
+            x[kx] &lt-- C[j] <br>
+            k &lt-- k+1 <br>
+    <em>RETURN</em> X
+              </pre>
+            </b></div>
+            <div class="codediv"> <b>
+              <pre>
+<em>ALGORITMO mergeSort( Array A[0....n-1])</em> <br> <br>
+    <em>IF</em> n > 1 <em>THEN</em> <br>
+        m &lt-- n/2 <br>
+        B &lt-- A[0....m-1] <br>
+        C &lt-- A[m....n-1] <br>
+        <em>mergeSort</em>(B) <br>
+        <em>mergeSort</em>(C) <br>
+        A &lt-- <em>merge</em>(B,C)
+              </pre>
+            </b></div>
+            <p>
+              Tempo: Θ(nlg(n)). <br>
+            </p> <br>
+            <hr>
+            <!---->
           </div>
           <div>
             <a name="quicksort"></a>

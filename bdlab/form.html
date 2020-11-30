@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="IT">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/uikit.min.css" />
+        <script src="js/uikit.min.js"></script>
+        <script src="js/uikit-icons.min.js"></script>
+		<title>Prova di HTML e form</title>
+	</head>
+	<body>
+		<div class="uk-container">
+		<form action="showmovie.php" method="POST">
+		    <fieldset class="uk-fieldset">
+
+		        <legend class="uk-legend">
+		         Di quale pellicola desideri informazioni?
+		        </legend>
+
+		        <div class="uk-margin">
+			        <label class="uk-form-label" for="textinput1">Indica il titolo della pellicola di interesse</label>
+			        <div class="uk-form-controls">
+			            <input class="uk-input" id="textinput1" name="movietitle" type="text" placeholder="Titolo della pellicola">
+			        </div>
+			    </div>
+
+		        <div class="uk-margin">
+		            <label class="uk-form-label" for="form-stacked-select">Specifica il genere al quale sei interessato</label>
+			        <div class="uk-form-controls">
+			            <select class="uk-select" id="form-stacked-select" name="moviegenre">
+			                <option value="F">Fantasy</option>
+		                	<option value="T">Thriller</option>
+		                	<option value="C">Comedy</option>
+			            </select>
+			        </div>
+		        </div>
+
+		        <button type="submit" class="uk-button uk-button-primary">Esegui ricerca</button>
+
+		    </fieldset>
+		</form>
+
+		</div>
+	</body>
+</html>

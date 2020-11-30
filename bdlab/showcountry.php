@@ -7,16 +7,21 @@
 
   // film prodotti in francia
   $france_movie = array (
-    'Mary and Max',
-    'Les dalton',
-    'Il vento ci porterà via'
+    0 => 'Mary and Max',
+    1 => 'Les dalton',
+    2 => 'Il vento ci porterà via'
   );
 
   // film prodotti in italia
   $italy_movie = array (
-    'La grande bellezza',
-    'Il capitale umano',
-    'Cuore'
+    0 => 'La grande bellezza',
+    1 => 'Il capitale umano',
+    2 => 'Cuore'
+  );
+
+  $movies = array (
+    ['ITA'] => $italy_movie,
+    ['FRA'] => $france_movie
   );
 
 ?>
@@ -34,7 +39,59 @@
   <body>
     <div class="uk-container">
 
+      <div class="uk-card uk-card-default uk-card-body">
+        <?php
+          if ( isset($_GET) && !empty($_GET['country'])) {
+            $get_parameter = $_GET['country'];
 
+            //Versione dinamica
+            if (isset($movies[$get_parameter])) {
+              $country_name = $get_parameter;
+              $movielist = $movies[$get_parameter];
+            } else {
+              $get_parameter = 'paese sconosciuto';
+              $movielist = array();
+            }
+
+            //Alternativa alla verione dinamica
+            /*switch ($get_parameter) {
+              case 'ITA':
+                  $country_name = 'Italia';
+                  $movielist = $movies['ITA'];
+                break;
+              case 'FRA':
+                  $country_name = 'Francia';
+                  $movielist = $movies['FRA'];
+                break;
+              default:
+                  $get_parameter = 'paese sconosciuto';
+                  $movielist = array();
+                break;
+            }*/
+
+        ?>
+          <h3 class="uk-card-title">Le pellicole prodotte in <?php print($country_name); ?> sono:</h3>
+          <p>
+            <?php
+              if (!empty($movielist)) {
+                //stampa la lista
+                foreach ($movielist as $m) {
+                  print('titolo: ');
+                  print($m);
+                  print('<br>');
+                }
+
+              } else {
+                print ('nessuna pellicola corrisponde al parametro specificato');
+              }
+            ?>
+          </p>
+      </div>
+      <?php
+    } else {
+      print ('La pagina prevede di indicare il paese d interesse per dunzionare correttamente.');
+    }
+       ?>
 
     <!--Chiusura generale della pagina-->
     </div>

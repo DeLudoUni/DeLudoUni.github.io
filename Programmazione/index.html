@@ -209,7 +209,7 @@ Class x {
               <li>                                          -  Ricalcare "Ontologica" (Eccezioni - Gerarchia esistende da rispecchiare sui diversi tipi [astratta]).</li>
             </ul>
             <br>
-            <h4>Principio di Sostituizone della Liskov:</h4>
+            <h4><a href="#PrincipioSostituzioneLiskov">Principio di Sostituizone della Liskov:<a></h4>
             <p>             Le istanze della classe padre devono poter essere sempre aggiunte ad una classe figlia.</p>
             <br>
             <h3>Come si può fare?</h3>
@@ -261,12 +261,13 @@ Class x {
               <li><b>Classi concrete:</b>
                               Raccolta di metodi e di stato che realizza un insieme di comportamenti. Si può avere un'implementazione proria. Estendono.</li> <br>
             </ul>
-            <h3>Perchè usare queste 3 differenze?</h3>
+            <h3>Quali sono le differenze tra queste 3?</h3>
             <ul>
               <li><b>Interfacce:</b>
-                          Definire in modo specifico quali sono i comportamenti che devono avere le sue sottoclassi. In tal modo mi assicuro che tutta la gerarchia che parte dalle Interfacce implemneta tali metodi in modo proprio in base alla propria implementazione.</li>
+                          Definire in modo specifico quali sono i comportamenti che devono avere le sue sottoclassi. In tal modo mi assicuro che tutta la gerarchia che parte dalle Interfacce implemneta tali metodi in modo proprio in base alla propria implementazione. <br>
+                          Ultimamente vengono aggiunti delle implementazioni. Vi sono presenti anche dei metodi di default. Definisce un comportamento in termini degli altri metodi senza entrare nello stato. (Un metodo che può essere definito esclusivamente dagli altri metodi, indipendentemente della loro implementazione).</li>
               <li><b>Classi astratte:</b>
-                              Implementati per la codivisione del codice, vecchio java. Esse hanno sempre delle classi inferiori che implemnetano le parti mancanti della classe astratta.</li>
+                              Implementati per la codivisione del codice, vecchio java. Esse hanno sempre delle classi inferiori che implemnetano le parti mancanti della classe astratta. Può definire anche alcuni comportamenti. Abstract metode. Posso riusare il codice, ma perdo l'icapsulamento in quanto do libero accesso alle sottoclassi del mio stato.</li>
               <li>
                 <b>Classi concrete:</b>
                 <ul>
@@ -292,6 +293,9 @@ Class x {
               </li>
             </ul>
             <br>
+            <p>Una classe può estendere solo una classe. Ma può implementare più interfacce. Ereditarietà multipla. <br>
+            Se una classe estende una classe e implementa una interfaccia che entrambe presentano un metodo uguale  sia nella classe che nella interfaccia come metodo default. In genere vince l'implementazione concreta della classe.</p>
+            <br>
             <h3>Operatori di visibilità:</h3>
             <ul>
               <li> <b>- Public:</b> visibile a tutti.</li>
@@ -303,12 +307,29 @@ Class x {
 
 
         </div>
+        <div class="div-20">
+          <hr>
+          <br>
+          <a name="PrincipioSostituzioneLiskov"></a>
+          <h3>Principio di sostituzione di Liskov</h3>
+          <p>Se esitono certe relazioni di sottotipo. Il programma deve funzione per tutte le occorenze di T sostituisco con S. Dove S è un sottotipo di T. Di conseguenza posso sostituire tutte le sottoclassi alle superclassi e il programma deve continuare a funzionare.</p>
+          <ul>
+            <li>Regola delle segnature: per ogni metodo che c'è in T ci deve essere lo stesso metodo in S con le segnature compatibili (stesso nome, stessi paramentri passati, solleva meno eccezioni, possono tornare diversi valori di ritorno purchè siano più spacifici).</li>
+            <li>Regola dei metodi: Specificazione. <br>
+              <ul>
+                <li>- Indebolire le precondiozini: Le precondizioni del tipo implicano le pecondizioni del sottotipo. Se sono vere le precondizioni del sottotipo allora lo sono del sottotipo.</li>
+                <li>- Rafforzare le postcondizioni: Se valgono le postcondizioni di S e le precondizioni di T devono valere le postcondizionidi T. Questo perchè ho indebolito le precondizioni. Quindi le cose che vanno bene per la sottoclasse devono essere valide per la superclasse.</li>
+                <li>- Particolare attenzione al metodo Equals: S è una sottoclasse di T. Dove S ha le variabili a e b. T ha la varaibile a.
+                In S verifico che l'oggetoo o sia di tipo S. Chiamo il super tipo di T per confrontare le variabili a di S e di o.</li></li>
+              </ul>
+              <li>Regola delle proprietà: Tutte le proprietà che sono valide su T, devono essere valide anche su S.</li>
+          </ul>
+
+          <!--Chiusura-->
+        </div>
         <!--Chiusura finale intero articolo-->
       </div>
-
-
     <!--Chiura finale della div riguardante l'articolo -->
-
     </article>
     </section>
   </body>

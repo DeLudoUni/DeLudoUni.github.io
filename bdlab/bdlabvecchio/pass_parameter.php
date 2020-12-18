@@ -1,8 +1,3 @@
-<?php 
-	ini_set ("display_errors", "On");
-	ini_set("error_reporting", E_ALL);
-	include_once ('lib/functions.php'); 
-?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,7 +16,7 @@
         <form class="uk-form-horizontal" action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
             <legend class="uk-legend">Passaggio di parametri con il metodo POST</legend>
 
-            <div class="uk-margin">     
+            <div class="uk-margin">
                 <label class="uk-form-label" for="movie-title">Titolo</label>
                 <div class="uk-form-controls">
                     <input class="uk-input" id="movie-title" type="text" placeholder="inserisci il titolo" name="movie[title]">
@@ -48,16 +43,13 @@
             <div class="uk-margin">
                 <label class="uk-form-label" for="movie-genre">Genere</label>
                 <div class="uk-form-controls">
-                    <select class="uk-select" id="movie-genre" name="movie[genre]">
-                    <option value="" selected="selected">Seleziona una voce</option>
-                    <?php 
-                    $genres = get_movie_genres();
-                    foreach ($genres as $code => $value) {
-                    ?>
-                        <option value="<?php echo $code; ?>"><?php echo $value; ?></option>
-                    <?php
-                  	}		
-                    ?>
+                    <select class="uk-select" id="movie-genre">
+                    	<option value="" selected="selected">Seleziona una voce</option>
+                        <option value="4126022">Sci-Fi</option>
+                        <option value="0816692">Drama</option>
+                        <option value="0816692">Adventure</option>
+                        <option value="1345836">Thriller</option>
+                        <option value="0770828">Action</option>
                     </select>
                 </div>
             </div>
@@ -67,21 +59,8 @@
     </div>
 
     <?php
-    if(isset($_POST['movie'])) {
+    if(isset($_POST['movie'])){
         $movie = $_POST['movie'];
-        // print_r ($movie);
-        $title = 'ND';
-        if(!empty($movie['title']))
-        	$title = $movie['title'];
-        $year = 'ND';
-        if(!empty($movie['year']))
-        	$year = $movie['year'];
-        $length = 'ND';
-        if(!empty($movie['length']))
-        	$length = $movie['length'] . ' minuti';
-        $release_date = 'ND';
-        if(!empty($movie['release']))
-        	$release_date = date('d/m/Y',strtotime($movie['release']));
     ?>
     <hr>
     <div class="uk-card uk-card-primary uk-card-body uk-margin-bottom">
@@ -89,27 +68,19 @@
         <div uk-grid>
             <div class="uk-width-1-3">
                 <span class="uk-text-bold">Titolo (anno): </span> 
-                <?php echo $title . " (" . $year . ")"; ?>
+                <?php echo $movie['title'] . " (" . $movie['year'] . ")"; ?>
             </div>
             
             <div class="uk-width-1-3">
                 <span class="uk-text-bold">Durata: </span>
-                <?php echo $length; ?><br>
-                
-                <?php 
-                $genre = get_genre_name($movie['genre']);
-                if (!is_null($genre)) {
-                ?>
+                <?php echo $movie['length']; ?> minuti<br>
                 <span class="uk-text-bold">Genere: </span>
-                <?php echo $genre; ?>
-                <?php
-                }
-                ?>
+                <?php echo $movie['genre']; ?>
             </div>  
 
             <div class="uk-width-1-3">
                 <span class="uk-text-bold">Data di rilascio in Italia: </span>
-                <?php echo $release_date; ?>
+                <?php echo $movie['release']; ?>
             </div>       
         </div>
     </div>
@@ -118,38 +89,6 @@
     ?>
 
     <div class="uk-card uk-card-secondary uk-card-body">
-    <?php
-    if (isset($_GET['country'])) {
-    	$country = $_GET['country'];
-    	
-    ?>
-    	<h3 class="uk-card-title">Film prodotti in <?php echo $country ?></h3>
-		<table class="uk-table uk-table-divider">
-		<thead>
-			<tr>
-				<th>Titolo del film</th>
-				<th>Anno di produzione</th>
-			</tr>
-		</thead>
-		<tbody>
-    
-    
-    <?php
-    	$movies = get_movie_country($country);
-    	foreach ($movies as $year => $title) {
-    ?>
-    	<tr>
-            <td><?php echo $title; ?></td>
-            <td><?php echo $year; ?></td>
-        </tr>
-    <?php
-    	}
-    ?>
-        </tbody>
-		</table>
-    <?php
-    } 
-    ?>
         <h3 class="uk-card-title">Seleziona il paese di interesse (passaggio di parametri con il metodo GET)</h3>
         Vedi i film prodotti in <a href="<?php echo $_SERVER['PHP_SELF']; ?>?country=ITA">Italia</a>.<br>
         Vedi i film prodotti in <a href="<?php echo $_SERVER['PHP_SELF']; ?>?country=FRA">Francia</a>.<br> 

@@ -327,6 +327,98 @@ Class x {
 
           <!--Chiusura-->
         </div>
+        <div class="div-20">
+          <hr>
+          <h3>Polimorfismo</h3>
+
+          1)Abbiamo già visto il polimorfismo nella forma di (sub)typing per sottotipi (Interfacce e successive implementazioni). Tipo concreto/apparente
+
+          2)Polimorfisfo ad hoc:
+                - overload (comportamento che cambia in funzione degli argomenti passati. Esso dipende dai paramentri passati)
+                - overriding (doto un sottotipo di comportamenti diversi. Esso dipende dalla forma concreta del tipo)
+
+          3)Polimorfismo Parametrico: meccanismo Generic Type. Astrazione dai parametri e dai tipi.
+
+          <h3>Generici (Tipo)</h3>
+
+          Consentono la Type safeness (contenitori sicuri rispetto al tipo).
+
+          Specificazione: Indicazione dei comportamenti + indicazioni su quali tipi di base sono.
+
+          class T &ltX,Y,...> {
+
+            void f(X p) {...};
+            Y g() {...};
+
+          }
+
+          new T &ltString, Que>;
+
+          Si astrae da che tipo sia l'oggetto, considerando che se fosse un oggetto generico.
+
+          <h3>Collezioni</h3>
+
+          List  Array/Linked
+          Set Hash/Alberi
+          Mappe Hash/Alberi
+
+          Algoritmi: sorting. Ci sono 2 metodi:
+          - Tramite classe COMPARATOR (una classe che prende 2 generi e restituisce quale dei 2 è il più grande). Interfaccia COMPARABLE che possiede un COMPARATOR.
+
+          Tipo Generico: class C&ltT> {....T....};
+          Tipo Parametrico: C&ltString> e = new C&lt>();
+
+          Metodi Generici
+          Dichiarazione: .......&ltT> f(........T....) { ... T...... }
+          Invocazione: x.&ltString>f(....) //Inferenza di tipo, si può non scrivere il tipo
+
+          Cosa succede nei generici: durante la copilazione viene attivato il Type Erasure che sostituisce tutti i tipi generi con un tipo oggetto, vengon aggiunti tutti i cast e dei metodi ponte per garantirne il funzionamento. Il tipo finale viene chiamato RAWTYPE (tipo nudo).
+
+          BOUND:
+          WILDCARD:
+
+          <h4>Testing e Debugging</h4>
+
+          Validation - Convalida: Si comprende cosa vuole l'utente. Stiamo costruendo la cosa giusta?
+          Verification - Verifica: Si verifica che il prodotto soddisfa le esigenza. Stiamo costrento la cosa in modo corretto?
+                    In modo Formale (Prove di Correttezza)
+                    Testing
+                    Defensive Programming
+
+          Testing
+
+          Contrasto tra riultato Atteso (Expected) e il risualtato attuale (Actual)
+          - I test devono essere "piccoli" e "rappresentativi"
+
+          Si usa 2 metodi diversi ed opposti:
+
+          Black Box Testing: Sulla base delle specifiche ottengo un possibile effetto.
+                            - non hanno Implementazione.
+                            - robusta.
+                            - Possono essere fatti da esterni.
+
+          Glass Box Testing: Guardo l'implementazione.
+                            - Selezione/Iterazione/Ricorsione
+                            - Coverage
+
+          Procedure - Iteratori - Tipi di Dati - Costruttori
+
+          Test UNITARI: sugli singoli moduli - Tools
+          Test Integrazione: tramite specificazione mettendo inisieme i test UNITARI
+          Test Regressione: Test su eventuali modifiche.
+
+          Tools:
+                - Costruire dei test case (a mano)
+                - Esecuzione
+                              Setup: Preparo l'ambiente
+                              Controllo SUT: Subject under test   //  DOC: Dependent of component: Nono viene usata l'implementazione originale, ma una simile STUB
+                              Esecuzione dei test
+                              Teardown: cancello e risistemo dopo l'interfaccia
+                - Reporting
+
+
+          <!--Chiusura-->
+        </div>
         <!--Chiusura finale intero articolo-->
       </div>
     <!--Chiura finale della div riguardante l'articolo -->

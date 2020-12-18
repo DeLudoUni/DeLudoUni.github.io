@@ -21,23 +21,9 @@
             <div class="uk-card uk-card-primary uk-card-body uk-padding-small uk-text-left">
                 <nav>
 					<ul class="uk-nav uk-nav-default">
-					<?php
-					//list è l'opzione di visualizzazione predefinita
-					if (isset($_GET['mod']))
-						$active = $_GET['mod'];
-					else
-						$active = 'list';
-					
-					$menu = get_menu_entries();
-                    foreach ($menu as $key => $value) {
-                    	$active_option = '';
-                    	if ($key == $active)
-	    					$active_option = 'class="uk-active"';
-					?>
-						<li <?php echo $active_option; ?>><a href="dynamic_menu.php?mod=<?php echo $key; ?>"><?php echo $value; ?></a></li>
-					<?php
-					}
-					?>
+						<li><a href="dynamic_menu.php?mod=list">Film disponibili</a></li>
+						<li><a href="dynamic_menu.php?mod=insert">Nuovo film</a></li>
+						<li><a href="dynamic_menu.php?mod=stats">Statistiche</a></li>
 					</ul>
 				</nav>
             </div>

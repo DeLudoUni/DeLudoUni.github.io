@@ -17,8 +17,9 @@
                 <div class="uk-navbar-dropdown">
                     <ul class="uk-nav uk-navbar-dropdown-nav">
                         <li><a href="movie.php">Film</a></li>
-                    	<li><a href="movie.php?mod=err">Film (SQL injection)</a></li>
-                    	<li><a href="movie.php?mod=fix">Film (corretto)</a></li>
+                    	<li><a href="movie_err.php">Film (SQL injection)</a></li>
+                    	<li><a href="movie_fix.php">Film (corretto)</a></li>
+                    	<li><a href="movie_paging.php">Film (con paginazione)</a></li>
                     </ul>
                 </div>
             </li>

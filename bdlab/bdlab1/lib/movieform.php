@@ -1,4 +1,80 @@
-<form class="uk-form-horizontal" action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
+<?php
+	$error_msg = '';
+	$success_msg = '';
+
+    if(isset($_POST) && isset($_POST['movie'])) {
+        $movie = $_POST['movie'];
+        // print_r ($movie);
+        
+        $id = null;
+        if(!empty($movie['id']))
+        	$id = $movie['id'];
+        else
+        	$error_msg = "Errore. E' necessario inserire il codice del film";
+        	
+        $title = null;
+        if(!empty($movie['title']))
+        	$title = $movie['title'];
+        else
+        	$error_msg = "Errore. E' necessario inserire il titolo del film";;
+        	
+        $budget = null;
+        if(!empty($movie['budget']))
+        	if (is_numeric($movie['budget']))
+        		$budget = $movie['budget'];
+        		
+        $year = null;
+        if(!empty($movie['year']))
+        	if (is_numeric($movie['year']))
+        		$year = $movie['year'];
+        		
+        $length = null;
+        if(!empty($movie['length']))
+        	if (is_numeric($movie['length']))
+        		$length = $movie['length'];
+        		
+        $plot = null;
+        if(!empty($movie['plot']))
+        	$plot = $movie['plot'];
+        	
+        if (empty($error_msg)) {
+        	$db = open_pg_connection();
+        	
+        	$result = pg_query($db, 'SET SEARCH_PATH TO imdb');
+	
+			$sql = "INSERT INTO movie(id, official_title, budget, year, length, plot) VALUES ($1, $2, $3, $4, $5, $6)";
+	
+            /*
+             * definire le istruzioni per l'inserimento della pellicola nel db
+             */
+        }
+    }
+
+    // link da usare nella clausola action del form di inserimento
+    $pagelink = $_SERVER['PHP_SELF'] . '?mod=insert';
+        	
+?>
+<?php
+if (!empty($success_msg)) {
+?>
+<div class="uk-alert-success" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <p><?php echo $success_msg; ?></p>
+</div>
+<?php
+}
+?>
+<?php
+if (!empty($error_msg)) {
+?>
+<div class="uk-alert-danger" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <p><?php echo $error_msg; ?></p>
+</div>
+<?php
+}
+?>
+<form class="uk-form-horizontal" action="<?php echo $pagelink; ?>" method="POST">
 	<legend class="uk-legend">Inserisci un nuovo film</legend>
 
 	<div class="uk-margin">     

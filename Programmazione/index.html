@@ -315,13 +315,13 @@ Class x {
           <h3>Principio di sostituzione di Liskov</h3>
           <p>Se esitono certe relazioni di sottotipo. Il programma deve funzione per tutte le occorenze di T sostituisco con S. Dove S è un sottotipo di T. Di conseguenza posso sostituire tutte le sottoclassi alle superclassi e il programma deve continuare a funzionare.</p>
           <ul>
-            <li>Regola delle segnature: per ogni metodo che c'è in T ci deve essere lo stesso metodo in S con le segnature compatibili (stesso nome, stessi paramentri passati, solleva meno eccezioni, possono tornare diversi valori di ritorno purchè siano più spacifici).</li>
+            <li>Regola delle segnature: per ogni metodo che c'è in T ci deve essere lo stesso metodo in S con le segnature compatibili (stesso nome, stessi paramentri passati, solleva meno eccezioni, possono tornare diversi valori di ritorno purchè siano più specifici).</li>
             <li>Regola dei metodi: Specificazione. <br>
               <ul>
-                <li>- Indebolire le precondiozini: Le precondizioni del tipo implicano le pecondizioni del sottotipo. Se sono vere le precondizioni del sottotipo allora lo sono del sottotipo.</li>
-                <li>- Rafforzare le postcondizioni: Se valgono le postcondizioni di S e le precondizioni di T devono valere le postcondizionidi T. Questo perchè ho indebolito le precondizioni. Quindi le cose che vanno bene per la sottoclasse devono essere valide per la superclasse.</li>
-                <li>- Particolare attenzione al metodo Equals: S è una sottoclasse di T. Dove S ha le variabili a e b. T ha la varaibile a.
-                In S verifico che l'oggetoo o sia di tipo S. Chiamo il super tipo di T per confrontare le variabili a di S e di o.</li></li>
+                <li>- Indebolire le precondiozini: Le precondizioni del tipo implicano le pecondizioni del sottotipo. Se sono vere le precondizioni del supertipo allora lo sono del sottotipo.</li>
+                <li>- Rafforzare le postcondizioni: Se valgono le postcondizioni di S e le precondizioni di T devono valere le postcondizioni di T. Questo perchè ho indebolito le precondizioni. Quindi le cose che vanno bene per la sottoclasse devono essere valide per la superclasse.</li>
+                <li>- Particolare attenzione al metodo Equals: S è una sottoclasse di T. Dove S ha le variabili a e b. T ha la varиаbile a.
+                In S verifico che l'oggetto o sia di tipo S. Chiamo il super tipo di T per confrontare le variabili a di S e di o.</li></li>
               </ul>
               <li>Regola delle proprietà: Tutte le proprietà che sono valide su T, devono essere valide anche su S.</li>
           </ul>
